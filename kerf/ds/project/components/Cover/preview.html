@@ -1,0 +1,33 @@
+<!-- @dsCard height=320 -->
+<!--
+blocks: pine 300x320 (slab, bleeds right), kerf 180x150 (radius-lg), sap 120x150 (radius-lg), bark 60x60 (radius-md), canopy 180x110 (radius-lg)
+arrangement: one tall slab at the right edge with four satellites stepping down-left from it; the slab bleeds off the top and right
+pattern: "a literal motif (leaf, lens, spark) -> arcs built from radii": three concentric arcs (the tree cross-section) cut by one diagonal rule, the kerf. Chosen because the README's whole identity is the ring-and-cut mark; a generic trade brand would land on stripes.
+scales: gaps space-4 and space-6, radii radius-lg/radius-md, arc stroke widths 12/8/4 from space-3/space-2/space-1
+-->
+<style>
+  html,body{margin:0;height:100%;background:var(--ink);font-family:var(--font-display, Sora, system-ui, sans-serif)}
+  .wrap{position:relative;width:960px;height:320px;overflow:hidden}
+  .name{position:absolute;left:48px;bottom:56px;max-width:440px;color:var(--bone);font-size:120px;line-height:.92;font-weight:700;letter-spacing:-.045em;margin:0}
+  .tag{position:absolute;left:50px;bottom:28px;max-width:440px;color:var(--mist);font-family:var(--font-sans, Inter, system-ui, sans-serif);font-size:14px;line-height:18px;margin:0}
+  .pine{fill:var(--pine)} .kerf{fill:var(--kerf)} .sap{fill:var(--sap)} .bark{fill:var(--bark)} .canopy{fill:var(--canopy)}
+  .arc{fill:none;stroke:var(--sap)} .arc2{fill:none;stroke:var(--kerf)} .arc3{fill:none;stroke:var(--bone)}
+  .cut{stroke:var(--ink);stroke-width:14}
+</style>
+<div class="wrap">
+  <svg width="960" height="320" viewBox="0 0 960 320" aria-hidden="true">
+    <rect class="pine" x="660" y="-20" width="320" height="360" rx="18"/>
+    <rect class="kerf" x="500" y="40" width="180" height="150" rx="18"/>
+    <rect class="sap" x="500" y="214" width="120" height="150" rx="18"/>
+    <rect class="canopy" x="644" y="214" width="180" height="110" rx="18"/>
+    <rect class="bark" x="860" y="230" width="60" height="60" rx="10"/>
+    <g>
+      <circle class="arc" cx="820" cy="150" r="96" stroke-width="12"/>
+      <circle class="arc2" cx="820" cy="150" r="60" stroke-width="8"/>
+      <circle class="arc3" cx="820" cy="150" r="26" stroke-width="4"/>
+      <line class="cut" x1="760" y1="40" x2="900" y2="250"/>
+    </g>
+  </svg>
+  <h1 class="name">kerf</h1>
+  <p class="tag">Every call answered. Every quote chased.</p>
+</div>

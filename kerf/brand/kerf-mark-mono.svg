@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Kerf mark">
+  <defs>
+    <mask id="kerfcut">
+      <rect width="64" height="64" fill="#fff"/>
+      <rect x="30" y="-4" width="4.5" height="36" fill="#000" transform="rotate(38 32 32)"/>
+    </mask>
+  </defs>
+  <g mask="url(#kerfcut)" fill="none" stroke="currentColor">
+    <circle cx="32" cy="32" r="25" stroke-width="6"/>
+    <circle cx="32" cy="32" r="14" stroke-width="4"/>
+    <circle cx="32" cy="32" r="4" fill="currentColor" stroke="none"/>
+  </g>
+</svg>

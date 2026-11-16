@@ -1,0 +1,8 @@
+{"v":3,"layout":"files","createdOnFiles":{"v":1,"at":"2026-11-04T23:20:00Z"},"title":"Kerf Brand Kit","namespace":"Kerf","libraries":[],"sections":{},"groups":["Logos"],
+"assetGroups":{"Logos":{"name":"Logos","tile":"l","order":["kerf-mark.svg","kerf-mark-mono.svg","kerf-wordmark.svg","kerf-wordmark-dark-on-light.svg"],"files":{
+"kerf-mark.svg":{"name":"kerf-mark.svg","blob":"70290f43b4f95ed713c872bd866e7b5f","size":863,"type":"image/svg+xml"},
+"kerf-mark-mono.svg":{"name":"kerf-mark-mono.svg","blob":"579336ca61b65c4fe57a5af627818b7a","size":603,"type":"image/svg+xml"},
+"kerf-wordmark.svg":{"name":"kerf-wordmark.svg","blob":"57dd6ce05a71b24586ee6d3a62ea739f","size":1018,"type":"image/svg+xml"},
+"kerf-wordmark-dark-on-light.svg":{"name":"kerf-wordmark-dark-on-light.svg","blob":"21c83a5d27f7e2d89188f4018140de51","size":1018,"type":"image/svg+xml"}}}},
+"blobs":{},"docs":{"readme":"project/README.md","sections":[]},
+"lastChange":{"by":"Connor Grovenor","at":"2026-11-04T23:20:00Z","via":"Claude chat","note":"Initial Kerf brand kit: tokens, brand book, logos, cover"}}

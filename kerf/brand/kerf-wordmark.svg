@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" width="320" height="96" role="img" aria-label="Kerf">
+  <defs>
+    <linearGradient id="kg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C8F24D"/>
+      <stop offset="0.55" stop-color="#1FB26A"/>
+      <stop offset="1" stop-color="#0B5C44"/>
+    </linearGradient>
+    <mask id="kerfcut">
+      <rect width="320" height="96" fill="#fff"/>
+      <rect x="46" y="10" width="6.5" height="54" fill="#000" transform="rotate(38 48 48)"/>
+    </mask>
+  </defs>
+  <g mask="url(#kerfcut)">
+    <circle cx="48" cy="48" r="37" fill="none" stroke="url(#kg)" stroke-width="9"/>
+    <circle cx="48" cy="48" r="21" fill="none" stroke="url(#kg)" stroke-width="6" opacity="0.9"/>
+    <circle cx="48" cy="48" r="6" fill="url(#kg)"/>
+  </g>
+  <text x="108" y="70" font-family="Sora, 'Segoe UI', system-ui, sans-serif" font-weight="700" font-size="64" letter-spacing="-3" fill="#F4F1EA">kerf</text>
+</svg>
