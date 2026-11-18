@@ -4,9 +4,9 @@
 Kerf: the width of material a saw blade removes. The one cut that decides whether the job is clean. Pronounced "kerf". Always lowercase in the wordmark ("kerf"), capitalized in prose ("Kerf").
 
 ## Positioning
-Kerf is the AI front office for tree care companies. It answers every call, texts back every missed one, books the estimate, chases the quote, and asks for the review, so the owner can stay in the tree.
-Tagline (primary): Every call answered. Every quote chased.
-Tagline (short): The front office that never misses a call.
+Kerf is a growth layer that sits on top of the CRM a tree care company already uses. It drafts the follow-ups, the estimate chases and the review asks, and the owner approves each one with a tap, so the business follows through and the owner can stay in the tree.
+Tagline (primary): Your business follows through with Kerf.
+Tagline (short): Follow-up that gets done.
 One-liner for cold email: Built by a certified arborist who got tired of missing $3,000 removals while 60 feet up.
 
 ## Voice

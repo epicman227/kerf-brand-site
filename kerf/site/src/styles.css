@@ -193,7 +193,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   .phone-wrap{order:-1}
   .phone{height:min(380px,48svh);aspect-ratio:auto;width:100%;border-radius:24px;padding:14px}
   .ph-top{margin-bottom:8px}
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
   .steps li,.steps li:last-child{border:0}
   .steps button{grid-template-columns:1fr;padding:8px 0 0;gap:2px;text-align:left}
   .steps .n{padding:0;font-size:11px}
@@ -350,7 +350,7 @@ dd{margin:0;color:var(--mist);font-size:15px}
 @media (max-width:640px){.leak-list{grid-template-columns:1fr}.leak-list li{border-right:0;margin-right:0;padding:24px 0}.leak-list li+li{border-top:1px solid var(--hair2)}}
 
 /* benefits */
-.ben-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0 32px}
+.ben-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 32px}
 .ben-list li{padding:26px 0 30px;border-top:1px solid var(--hair2)}
 .ben-n{display:block;font-family:var(--mono);font-size:13px;color:var(--kerf);letter-spacing:.06em;margin-bottom:14px}
 .ben-list h3{font-size:19px;margin-bottom:10px}
@@ -403,3 +403,41 @@ dd{margin:0;color:var(--mist);font-size:15px}
 .band::after{background:linear-gradient(90deg,rgba(10,15,13,.88),rgba(10,15,13,.25))}
 .integr,.security{border:0}
 .foot{border-top:0;background:linear-gradient(90deg,transparent,var(--hair2),transparent) top/100% 1px no-repeat}
+
+/* launch rewrite: 3-step phone, screenshots, beta */
+.conn,.board{background:var(--pine);border:1px solid var(--hair)}
+.conn-row{display:flex;justify-content:space-between;gap:10px;padding:7px 0 0;margin-top:7px;border-top:1px solid var(--hair2)}
+.conn-row b{font-family:var(--mono);font-size:11px;color:var(--sap);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.draft{background:var(--canopy);border-bottom-right-radius:4px}
+.draft p{margin:6px 0 0}
+.acts{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;padding:0;background:none}
+.acts span{display:block;text-align:center;padding:12px 6px;border-radius:10px;font-weight:600;font-size:13px;background:rgba(244,241,234,.08)}
+.acts .ap{background:var(--sap);color:var(--ink)}
+.sent{background:rgba(31,178,106,.12);border:1px solid var(--hair)}
+.s-connect .conn{--y:0px}.s-connect .board{--y:112px}
+.s-draft .bubble.them{--y:0px}.s-draft .draft{--y:78px}
+.s-approve .draft{--y:0px}.s-approve .acts{--y:158px}.s-approve .sent{--y:224px}
+.shot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.shot{margin:0}
+.shot-frame{aspect-ratio:9/16;max-height:520px;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border:1px dashed var(--hair);border-radius:var(--r-lg);background:var(--pine);color:var(--mist);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.shot figcaption{margin-top:14px;color:var(--mist);font-size:15px}
+.shot figcaption b{display:block;color:var(--bone);font-family:var(--display);font-size:18px;margin-bottom:4px}
+.beta-add{margin-top:36px}
+.contact-in.one{grid-template-columns:1fr;max-width:760px}
+@media (max-width:900px){
+  .shot-grid{grid-template-columns:1fr}.shot-frame{aspect-ratio:16/10}
+  .s-draft .bubble.them{--y:0px}.s-draft .draft{--y:70px}
+  .s-approve .draft{--y:0px}.s-approve .acts{--y:150px}.s-approve .sent{--y:212px}
+  .s-connect .board{--y:104px}
+}
+
+.shot-frame.has-img{border-style:solid;overflow:hidden;background:var(--pine)}.shot-frame.has-img img{width:100%;height:100%;object-fit:contain;display:block}
+@media(max-width:760px){.shot-frame.has-img{aspect-ratio:auto;max-height:none}.shot-frame.has-img img{height:auto;max-width:360px;margin:0 auto}}
+
+/* 44px minimum tap targets */
+.brand{min-height:44px}
+.nav-links a{display:inline-flex;align-items:center;min-height:44px}
+.nav-links a::after{bottom:8px}
+.btn{min-height:44px}
+.foot nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px}
+.sheet a{min-height:44px;display:flex;align-items:center}

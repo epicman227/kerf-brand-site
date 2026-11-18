@@ -2,34 +2,26 @@ import { build } from "esbuild";
 import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync, readdirSync, rmSync } from "fs";
 
 const imgDir = "../images";
-const names = ["hero","hero-bg","storm-roof","rigging","grinder","cleanup","log-rounds","spar","founder","hvac","plumber","landscaping","roofing","homeowner-text"];
+const names = ["hero","hero-bg","spar","founder","shot-board","shot-draft","shot-report"];
 const have = {};
 rmSync("dist/images", { recursive: true, force: true });
-mkdirSync("dist/images/logos", { recursive: true });
+mkdirSync("dist/images", { recursive: true });
 for (const n of names) {
   const p = `${imgDir}/${n}.webp`;
   if (existsSync(p)) { have[n] = true; copyFileSync(p, `dist/images/${n}.webp`); }
 }
-const logos = {};
-const logoDir = `${imgDir}/logos`;
-if (existsSync(logoDir)) for (const f of readdirSync(logoDir)) {
-  const m = f.match(/^([a-z0-9-]+)\.(svg|png)$/); if (!m) continue;
-  logos[m[1]] = f; copyFileSync(`${logoDir}/${f}`, `dist/images/logos/${f}`);
-}
+const logos = {}; // no third-party logos: Kerf supports QuoteIQ and Quo only in the beta
 const css = readFileSync("src/styles.css", "utf8");
 const icon = encodeURIComponent(readFileSync("../brand/kerf-mark.svg", "utf8"));
-const meta = {
-  index: ["Kerf. The AI front office for tree care companies.", "Kerf answers your phone 24/7, texts back every missed call in under a minute, books the estimate, and follows up until the removal is won. Built by a certified arborist."],
-  trades: ["Kerf. The AI front office for home service trades.", "Kerf answers your phone 24/7, texts back every missed call in under a minute, books the job, and follows up until the quote is won. HVAC, plumbing, roofing, landscaping, electrical."],
-};
-for (const page of ["index", "trades"]) {
+const title = "Kerf. No lead goes cold. Built by an arborist.";
+const desc = "Kerf sits on top of the CRM and phone you already use, drafts every follow-up in your voice, and waits for your one tap. Built by an arborist for tree care owners.";
+for (const page of ["index"]) {
   const r = await build({
     entryPoints: ["src/main.jsx"], bundle: true, minify: true, write: false, format: "iife", jsx: "automatic", target: ["es2019"],
     define: { "process.env.NODE_ENV": '"production"', "__KERF_IMAGES__": JSON.stringify(have), "__KERF_LOGOS__": JSON.stringify(logos), "__KERF_PAGE__": JSON.stringify(page) },
     legalComments: "none",
   });
   const js = r.outputFiles[0].text;
-  const [title, desc] = meta[page];
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,4 +43,5 @@ for (const page of ["index", "trades"]) {
   writeFileSync(`dist/${page}.html`, html);
   console.log(page, "built; size KB:", Math.round(html.length / 1024));
 }
+rmSync("dist/trades.html", { force: true });
 console.log("images:", Object.keys(have).join(",") || "none", "| logos:", Object.keys(logos).join(",") || "none");

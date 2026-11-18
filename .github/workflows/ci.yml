@@ -1,0 +1,26 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  site-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: kerf/site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - name: Build
+        run: node build.mjs
+      - name: Committed dist matches a fresh build
+        run: git diff --exit-code -- dist
+      - name: No banned claims on the page
+        run: |
+          if grep -inoE 'receptionist|spanish|housecall|servicetitan|gohighlevel|jobber|12-month|front office|—' dist/*.html; then
+            echo "Banned term found in built page"; exit 1
+          fi
