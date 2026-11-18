@@ -3,7 +3,7 @@
 // no integrations beyond QuoteIQ and Quo, no contract terms, no prices (pricing waits on Connor).
 
 // TODO(Connor): replace with the real booking link before the page goes live.
-export const DEMO_URL = "https://calendly.com/";
+export const DEMO_URL = "https://example.com/replace-with-booking-link";
 
 export const TREE = {
   key: "tree",
