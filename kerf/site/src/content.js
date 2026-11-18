@@ -58,7 +58,7 @@ export const TREE = {
     lead: "",
     items: [
       ["The thread reader sits on the deal", "The draft is in the same thread you already have."],
-      ["A close score on each lead", "The score is taken from estimate views, so you call the warm ones first."],
+      ["A close score on each lead", "The score counts estimate views, so you call the warm ones first."],
       ["It sounds like you", "You approve the words, so the draft sounds like the owner."],
       ["One report", "One report covers your CRM, your phone, and your marketing."],
     ],
