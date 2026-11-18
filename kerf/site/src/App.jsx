@@ -293,9 +293,9 @@ function Shots({ s }) {
       <div className="wrap">
         <div className="sec-head" data-reveal><h2>{s.heading}</h2><p className="lead">{s.lead}</p></div>
         <div className="shot-grid">
-          {s.items.map(([t, cap], i) => (
+          {s.items.map(([t, cap, img], i) => (
             <figure key={t} className="shot" data-reveal style={{ transitionDelay: `${i * 100}ms` }}>
-              <div className="shot-frame" role="img" aria-label={`Screenshot placeholder: ${t}`}><Mark size={44} id={"sh" + i} /><span>Screenshot coming</span></div>
+              {img && __KERF_IMAGES__[img] ? <div className="shot-frame has-img"><img src={`images/${img}.webp`} alt={`${t}: North Fork Arbor Care demo account`} loading="lazy" width="600" height="1298" /></div> : <div className="shot-frame" role="img" aria-label={`Screenshot placeholder: ${t}`}><Mark size={44} id={"sh" + i} /><span>Screenshot coming</span></div>}
               <figcaption><b>{t}</b>{cap}</figcaption>
             </figure>
           ))}

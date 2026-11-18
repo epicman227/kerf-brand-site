@@ -40,16 +40,16 @@ export const TREE = {
       ["One board", "Every call, text, form, and estimate lands on one scored board, so you know who to call first."],
       ["Drafts in your voice", "The thread reader writes the reply and the follow-up. You approve, edit, or skip with one tap from your phone."],
       ["Follow-up after the estimate", "Follow-up until it books. After the job, the review ask and the referral ask."],
-      ["One report on Friday", "Leads, response time, estimates, jobs won, and revenue by source."],
+      ["One report on Friday", "Leads, response time, estimates, jobs won, and revenue by source.", "shot-report"],
     ],
   },
   shots: {
     heading: "What you see on your phone",
-    lead: "Shown with a made-up company, North Fork Arbor Care. Screenshots from the demo account are on the way.",
+    lead: "Shown with a made-up company, North Fork Arbor Care. These are screenshots from the demo account.",
     items: [
-      ["One board", "Every lead, scored, with the one to call first on top."],
-      ["Approve a draft", "The follow-up in your voice. Approve, edit, or skip."],
-      ["The Friday report", "Leads, response time, estimates, jobs won, revenue by source."],
+      ["One board", "Every lead, scored, with the one to call first on top.", "shot-board"],
+      ["Approve a draft", "The follow-up in your voice. Approve, edit, or skip.", "shot-draft"],
+      ["The Friday report", "Leads, response time, estimates, jobs won, revenue by source.", "shot-report"],
     ],
   },
   benefits: {

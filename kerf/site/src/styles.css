@@ -430,3 +430,6 @@ dd{margin:0;color:var(--mist);font-size:15px}
   .s-approve .draft{--y:0px}.s-approve .acts{--y:150px}.s-approve .sent{--y:212px}
   .s-connect .board{--y:104px}
 }
+
+.shot-frame.has-img{border-style:solid;overflow:hidden;background:var(--pine)}.shot-frame.has-img img{width:100%;height:100%;object-fit:contain;display:block}
+@media(max-width:760px){.shot-frame.has-img{aspect-ratio:auto;max-height:none}.shot-frame.has-img img{height:auto;max-width:360px;margin:0 auto}}

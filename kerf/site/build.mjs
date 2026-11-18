@@ -2,7 +2,7 @@ import { build } from "esbuild";
 import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync, readdirSync, rmSync } from "fs";
 
 const imgDir = "../images";
-const names = ["hero","hero-bg","spar","founder"];
+const names = ["hero","hero-bg","spar","founder","shot-board","shot-draft","shot-report"];
 const have = {};
 rmSync("dist/images", { recursive: true, force: true });
 mkdirSync("dist/images", { recursive: true });
