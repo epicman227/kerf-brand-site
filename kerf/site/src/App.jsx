@@ -174,7 +174,7 @@ function Why({ w }) {
           <p className="eyebrow">The problem</p>
           <h2>{w.heading}</h2>
           <p className="lead">{w.body}</p>
-          <dl className="why-list">{w.points.map(([t, b]) => <div key={t}><dt>{t}</dt><dd>{b}</dd></div>)}</dl>
+          {w.points.length > 0 && <dl className="why-list">{w.points.map(([t, b]) => <div key={t}><dt>{t}</dt><dd>{b}</dd></div>)}</dl>}
         </div>
       </div>
     </section>
@@ -305,11 +305,11 @@ function Shots({ s }) {
   );
 }
 
-function Benefits({ b }) {
+function Benefits({ b, id = "benefits" }) {
   return (
-    <section className="sec benefits" id="benefits">
+    <section className="sec benefits" id={id}>
       <div className="wrap">
-        <div className="sec-head" data-reveal><p className="eyebrow">What makes Kerf different</p><h2>{b.heading}</h2><p className="lead">{b.lead}</p></div>
+        <div className="sec-head" data-reveal><p className="eyebrow">{b.eyebrow}</p><h2>{b.heading}</h2>{b.lead && <p className="lead">{b.lead}</p>}</div>
         <ul className="ben-list">
           {b.items.map(([t, body], i) => (
             <li key={t} data-reveal style={{ transitionDelay: `${(i % 3) * 80}ms` }}>
@@ -336,7 +336,7 @@ function Founder({ f }) {
           <h2>{f.heading}</h2>
           {f.body.map((p, i) => <p key={i} className="lead">{p}</p>)}
           <div className="cred"><Mark size={28} id="cred" /><span>{f.credential}, still climbing</span></div>
-          <p className="fine">{f.note}</p>
+          {f.note && <p className="fine">{f.note}</p>}
         </div>
       </div>
     </section>
@@ -360,7 +360,7 @@ function Beta({ b }) {
           ))}
         </ul>
         <p className="lead beta-add" data-reveal>{b.addons}</p>
-        <p className="fine" data-reveal>{b.note}</p>
+        {b.note && <p className="fine" data-reveal>{b.note}</p>}
       </div>
     </section>
   );
@@ -427,6 +427,7 @@ export default function App({ page }) {
         <Hero page={page} />
         <Why w={page.why} />
         <Steps how={page.how} />
+        <Benefits b={page.offer} id="offer" />
         <Shots s={page.shots} />
         <Benefits b={page.benefits} />
         <Founder f={page.founder} />
