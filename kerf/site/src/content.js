@@ -69,7 +69,7 @@ export const TREE = {
   },
   beta: {
     heading: "The beta",
-    lead: "Invite-only. One install per company. Connor decides who we talk to first.",
+    lead: "Invite-only. One install per company.",
     whoTitle: "Who it is for",
     who: "Owners of tree care companies with 1 to 5 trucks, already on QuoteIQ and Quo.",
     inTitle: "In the beta",
