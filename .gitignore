@@ -8,3 +8,7 @@ node_modules/
 .wrangler/
 __pycache__/
 *.pyc
+# pre-approval pricing copy, kept out of the public repo (KERA-559)
+kerf/site/src/pricing.local.js
+kerf/site/shots/
+kerf/site/dist-draft/

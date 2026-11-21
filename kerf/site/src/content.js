@@ -1,127 +1,121 @@
-// Page content for the Kerf site. One page. Copy follows the approved positioning brief
-// (KERA-269 "positioning", line approved on KERA-190). Rules: no prices, no stats we have not
-// sourced, no testimonials or logos, QuoteIQ and Quo are the only systems named.
+// Page content for the Kerf site. One page. Source: the approved brief on KERA-477 (STRAT-6):
+// "Positioning brief v2" and "Website rewrite plan", look locked to D v2 Rings (KERA-524).
+// Rules: no invented testimonials, numbers or logos. No "coming soon", "planned" or "beta" on a feature.
+// QuickBooks Online and QuoteIQ are the only CRMs named. No Jobber. No price in this file: the
+// cost and founding blocks come from src/pricing.local.js, which is not committed (see build.mjs).
 
-// PLACEHOLDER: Connor has not supplied the demo booking link yet. Replace this one value with
-// the real Calendly URL. While it starts with "#", the Book a demo buttons scroll to the form.
-export const BOOK_URL = "#contact";
+// PLACEHOLDER: Connor has not supplied the real booking link. Replace this one value.
+// Not a working calendar. Nothing books itself until it is replaced.
+export const BOOK_URL = "https://calendly.com/kerf-placeholder/20-minute-look";
+export const BOOK_IS_PLACEHOLDER = true;
 
-// Where the contact form posts. A Cloudflare Pages Function in functions/api/lead.js.
+// Form handler stub. src/form.js validates and posts here. functions/api/lead.js stores the lead
+// and sends nothing to anyone. Without a LEADS binding it answers 503 and the form shows its error.
 export const FORM_ENDPOINT = "/api/lead";
+
+// Hero teaser cut. null until the Video Producer's file exists. While null, the hero shows the
+// poster built in the page. Set { src, poster } and the hero plays muted, looped, inline.
+export const HERO_VIDEO = null;
 
 export const TREE = {
   key: "tree",
-  title: "Kerf. Your business follows through.",
+  title: "Kerf. The operating system for a tree company.",
   description:
-    "Kerf sits on the CRM and the phone you already use. Every lead lands on one board, and follow-ups are drafted in your voice for one tap approval. For tree care companies on QuoteIQ and Quo.",
-  eyebrow: "For tree care companies on QuoteIQ and Quo.",
-  headline: ["Your business", "follows through with Kerf."],
-  sub: "Kerf sits on the CRM and the phone you already use. Every lead lands on one board. Follow-ups are drafted in your voice, and you approve them with one tap.",
-  heroImage: "hero",
-  heroAlt: "Arborist tied in at the top of a tall cottonwood against a blue sky",
-  heroCard: { title: "Draft waiting", sub: "Estimate follow-up, in your voice. Approve, edit, or skip." },
-  why: {
-    heading: "The lead came in. The follow-up did not.",
-    body: "You are in the tree or on the chipper. The estimate sits in a text thread. The next touch happens when someone remembers.",
-    points: [
-      ["On the job", "The phone is in the truck and both hands are on a line."],
-      ["After the estimate", "The quote goes out, then the thread goes quiet."],
-      ["Across tools", "The call is in one place, the text in another, the estimate in a third."],
-      ["At the end of the week", "Nobody can say which source the money came from."],
-    ],
-    image: "spar",
-    imageAlt: "Arborist tied in at the top of a tall spar against the clouds",
-  },
-  steps: [
-    { title: "Connect what you already run.", body: "QuoteIQ and Quo stay. Kerf sits on top of them.", state: "connect" },
-    { title: "Kerf drafts the next touch.", body: "The reply and the follow-up come from the real thread, in your voice.", state: "draft" },
-    { title: "You tap approve.", body: "Approve, edit, or skip. Nothing is sent until you tap.", state: "approve" },
-  ],
-  offer: {
-    heading: "What Kerf does first",
-    lead: "Four things, in this order.",
-    items: [
-      ["One board", "Every call, text, form, and estimate lands on one scored board, so you know who to call first."],
-      ["Drafts in your voice", "The thread reader writes the reply and the follow-up. You approve, edit, or skip with one tap from your phone."],
-      ["Follow-up after the estimate", "Kerf keeps the follow-up going until it books. After the job, it drafts the review ask and the referral ask."],
-      ["One report on Friday", "Leads, response time, estimates, jobs won, and revenue by source."],
+    "The board, the follow-up in your voice, the report, and the growth around the work. Kerf runs on Quo, works with the CRM you have, and you tap before anything goes out.",
+  tagline: "Your business follows through with Kerf.",
+  eyebrow: "For tree care companies",
+  headline: ["The operating system", "for a tree company."],
+  sub: "The board, the follow-up in your voice, the report, and the growth around the work. It runs on Quo. You tap before anything goes out.",
+  suite: {
+    eyebrow: "The suite",
+    heading: "One place for the work.",
+    lead: "Who to call, what to send, what the week paid, and the growth around the work.",
+    groups: [
+      ["Core", [
+        ["Board", "Every call, text, form, and estimate lands in one place, with a score, so you know who to call first."],
+        ["Drafts", "The next text is written in your voice. You send, edit, or skip. Nothing goes out until you tap."],
+        ["Follow-up", "An open estimate gets a follow-up. After the job, a review ask, then a referral ask. Each one waits for your tap."],
+        ["Report", "Leads, how fast you replied, estimates, jobs won, and what each source paid."],
+        ["Business health", "How the shop is doing, in one view."],
+        ["Analytics", "The same numbers as the report and business health. One place, not a second app."],
+      ]],
+      ["Growth", [
+        ["Neighbors", "A postcard to the homes around a job you already did, in Douglas, Arapahoe, and Jefferson counties. You tap before it mails."],
+        ["Social", "Review replies and posts, in your voice. You tap before they go."],
+        ["Ads", "Campaigns drafted for the work you do. You confirm before they run."],
+        ["Growth", "Where you rank, and a clear list of site fixes. You apply the fixes."],
+        ["Scouts", "People already asking for tree work, with a draft you can post. Kerf does not post it for you."],
+        ["Referrals", "Kerf tracks a referral and queues the reward for your tap. It does not pay the reward."],
+      ]],
     ],
   },
-  different: {
-    heading: "What makes it different",
-    lead: "Kerf works inside the conversations you already have.",
-    items: [
-      ["The thread reader sits on the deal", "The draft is in the same thread you already have."],
-      ["A close score on every lead", "Each lead is scored from estimate views."],
-      ["It sounds like you", "You approve the words before anything goes out."],
-      ["One report", "It covers the CRM, the phone, and marketing."],
-    ],
-  },
-  founder: {
-    heading: "Built by an arborist.",
+  quo: {
+    eyebrow: "Quo",
+    heading: "Kerf runs on Quo.",
     body: [
-      "Kerf started inside Saw and Order Tree Care. Connor Grovenor is an ISA Certified Arborist, and he still climbs. Leads came in while the crew was in a tree, and open estimates sat in the text thread.",
-      "He built Kerf on top of the CRM and the phone the company already used. A follow-up is drafted in his voice, and he approves it with one tap. Saw and Order is customer zero.",
+      "Kerf is not a phone system. Your customers call the Quo number. Quo is what puts the call and the text on the board.",
+      "If you want an assistant to pick up, that is Quo's own AI, Sona. Kerf does not turn it on. Kerf drafts the follow-up in your voice, and nothing goes out until you tap.",
+      "If Quo is disconnected, the board stops getting new calls and texts, and Kerf stops sending. Your Quo app keeps working.",
     ],
-    credential: "ISA Certified Arborist",
-    image: "founder",
-    imageAlt: "Kerf founder, an ISA Certified Arborist, kneeling beside a chainsaw on a removal",
+    two: "You pay Quo for the phone. You pay Kerf for the system. They are two bills.",
   },
-  beta: {
-    heading: "The beta",
-    lead: "Invite-only. One install per company.",
-    whoTitle: "Who it is for",
-    who: "Owners of tree care companies with 1 to 5 trucks, already on QuoteIQ and Quo.",
-    inTitle: "In the beta",
-    inList: [
-      "The installable web app, added to your home screen",
-      "Scored pipeline and thread reader",
-      "Estimate follow-up, review ask, referral ask",
-      "A weekly report",
-      "QuoteIQ and Quo",
+  crm: {
+    eyebrow: "The CRM you have",
+    heading: "You keep estimating where you do now.",
+    body: "Kerf does not replace your CRM. It works with QuickBooks Online and QuoteIQ. Moving a card on the board does not write back to the CRM and does not send anything.",
+    names: ["QuickBooks Online", "QuoteIQ"],
+  },
+  week: {
+    eyebrow: "How a week works",
+    heading: "It lands on the board. You tap. The report shows where the money came from.",
+    steps: [
+      ["It lands", "A call, a text, a form, or an estimate shows up on the board with a score."],
+      ["You tap", "The same tap covers a postcard, a reply, or an ad. Send, edit, or skip."],
+      ["You see the money", "The report shows which source paid, by the job."],
     ],
-    firstWeek: "The first week is draft mode. A customer text goes out only after you tap approve.",
+    note: "Approval first. Nothing goes to a customer without your tap.",
   },
-  report: {
-    heading: "One page every Friday",
-    body: "Leads, response time, estimates, jobs won, and revenue by source. No dashboard to learn.",
-    rows: [
-      ["Leads", 80],
-      ["Response time", 55],
-      ["Estimates", 66],
-      ["Jobs won", 40],
-      ["Revenue by source", 72],
+  faq: {
+    eyebrow: "Questions",
+    heading: "Plain answers.",
+    items: [
+      ["Do I have to use Quo?", ["Yes. Kerf runs on Quo. It does not connect to another phone system."]],
+      ["Does Kerf answer the phone?", ["No. Quo's AI can, if you turn that on in Quo. Kerf makes sure the lead does not go cold after that. A missed call can leave a text draft. You tap before it goes."]],
+      ["Does Kerf text my customers by itself?", ["Not at the start. You get Send, Edit, or Skip. Undo holds a send for 5 seconds. A message type can send itself only after you have sent 50 of that type with no edits and you turn that on. You can turn it back."]],
+      ["Can I keep my number?", [
+        "Yes. Move the business number customers already call onto Quo. Kerf does not move it. Quo does.",
+        "If that move is not done, forward the number to a Quo number. Calls still come in, and Kerf still gets them. Forwarding is the fallback.",
+        "A personal cell can stay personal. Kerf will not ask you to move it. You can forward missed calls from it instead.",
+      ]],
+      ["What CRM do I need?", ["The one you estimate in now. Kerf does not replace it. This page names QuickBooks Online and QuoteIQ. You keep estimating there. Moving a card does not write back and does not send."]],
+      ["What will I see on a call?", ["North Fork Arbor Care, a made-up company. Not your books. Nothing is sent while we look."]],
+      ["Is there an app store app?", ["No. It is the phone browser. Add to Home Screen."]],
     ],
-    note: "Sample layout. Your numbers appear after your first week.",
   },
-  faq: [
-    ["Do I have to leave my CRM?", "No. Kerf sits on QuoteIQ. Your jobs stay there."],
-    ["Does Kerf answer the phone for me?", "No. You keep Quo. Kerf drafts the follow-up. You decide what gets sent."],
-    ["Where do I download the app?", "You do not. Open it in the phone browser and tap Add to Home Screen."],
-    ["Who is it for?", "Tree care companies with 1 to 5 trucks, already on QuoteIQ and Quo."],
-    ["Can it text a customer by itself?", "No. You approve every text."],
-    ["What does it cost?", "We walk through that on the demo. No number on the page."],
-  ],
-  finalCta: {
-    heading: "Book a demo.",
+  // Product shots. Stays empty until captures of the KERA-526 build exist. Nothing renders while empty.
+  screens: [],
+  close: {
+    heading: "Reply for a 20 minute look.",
     sub: "We show you Kerf on a made-up company, North Fork Arbor Care. No real customer data is on screen.",
+    ask: "Book 20 minutes",
   },
   form: {
     note: "Or leave your details and we will reach out.",
     success: "Got it. We will be in touch.",
     failure: "That did not go through. Please try again in a minute.",
-    systems: ["QuoteIQ and Quo", "Something else"],
+    systems: ["QuickBooks Online", "QuoteIQ", "Something else"],
   },
   footer: "Kerf. Built by an arborist, for arborists.",
 };
 
+const PENDING = "Pending legal review. This page is a placeholder, not final, and not legal advice.";
 export const LEGAL = {
   privacy: {
     file: "privacy",
     title: "Privacy",
     paras: [
-      "This page is a placeholder. It has not been reviewed by a lawyer and is not final.",
-      "The contact form on this site collects the name, company, phone, email, and business system you type in. We use it to reply to you about a demo. We do not sell it.",
+      PENDING,
+      "The contact form on this site collects the name, company, phone, email, and business system you type in. We use it to reply to you about a look at Kerf. We do not sell it.",
       "The final privacy policy will replace this page after legal review.",
     ],
   },
@@ -129,8 +123,8 @@ export const LEGAL = {
     file: "terms",
     title: "Terms",
     paras: [
-      "This page is a placeholder. It has not been reviewed by a lawyer and is not final.",
-      "Kerf is in an invite-only beta. Nothing on this site is an offer, a price, or a guarantee.",
+      PENDING,
+      "Nothing on this site is an offer, a price, or a guarantee.",
       "The final terms will replace this page after legal review.",
     ],
   },
