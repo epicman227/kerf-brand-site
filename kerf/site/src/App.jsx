@@ -272,7 +272,7 @@ function Contact({ page }) {
         </div>
         <form className="form" data-reveal style={{ transitionDelay: "120ms" }} onSubmit={submit} noValidate>
           {status === "sent" ? (
-            <div className="thanks"><strong>{page.form.success}</strong></div>
+            <div className="thanks" role="status"><strong>{page.form.success}</strong></div>
           ) : (
             <>
               <label>Name<input required name="name" autoComplete="name" /></label>

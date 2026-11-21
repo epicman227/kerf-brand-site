@@ -9,7 +9,8 @@
     "serve": "node serve.mjs",
     "serve:draft": "DIR=dist-draft node serve.mjs",
     "shots": "node shots.mjs",
-    "test": "node build.mjs"
+    "test": "node build.mjs",
+    "check:publish": "node check-publish.mjs"
   },
   "keywords": [],
   "author": "",
