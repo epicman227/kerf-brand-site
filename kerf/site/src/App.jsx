@@ -318,7 +318,7 @@ function Legal({ doc }) {
           <p className="eyebrow">Pending legal review</p>
           <h1>{doc.title}</h1>
           {doc.paras.map((p, i) => <p key={i} className="lead">{p}</p>)}
-          <p><a className="textlink" href="index.html">Back to the site</a></p>
+          <p><a className="textlink standalone" href="index.html">Back to the site</a></p>
         </div></section>
       </main>
     </>

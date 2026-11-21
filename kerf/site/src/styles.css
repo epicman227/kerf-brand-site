@@ -22,6 +22,7 @@ p{margin:0 0 16px}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--hue);margin:0 0 18px}
 .sec-head{max-width:760px;margin-bottom:clamp(28px,4vw,48px)}
 .textlink{color:var(--kerf);text-decoration:underline;text-underline-offset:3px}
+.textlink.standalone{display:inline-flex;align-items:center;min-height:44px}
 
 /* one fixed background layer: ground, rings, wood grain, film grain */
 .bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
