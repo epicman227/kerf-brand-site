@@ -123,6 +123,18 @@ p{margin:0 0 16px}
 .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .shots img{width:100%;border-radius:var(--r-lg);border:1px solid var(--rim)}
 
+/* walkthrough strip and case study draft (KERA-576) */
+.walk{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.walk-step{display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--rim);border-top-color:color-mix(in srgb,var(--hue) 38%,transparent);border-radius:var(--r-lg);padding:20px}
+.walk-step h3{color:var(--bone);margin:0}
+.walk-step p{color:var(--mist);margin:0 0 8px}
+.walk-step img{width:100%;height:auto;border-radius:var(--r-md);border:1px solid var(--rim);display:block}
+.draft-flag{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--bone);border:1px solid var(--hair);border-radius:999px;padding:8px 14px;margin:0 0 20px}
+.case-hero{min-height:0;padding-top:clamp(96px,14vw,160px)}
+.ledger-row.tbc .l-b{color:var(--ash);border-bottom:1px dashed var(--hair);justify-self:start}
+.tbc-text{color:var(--mist)}
+@media (max-width:900px){.walk{grid-template-columns:1fr}}
+
 /* close + form */
 .close{padding:clamp(56px,8vw,104px) 0;border-top:1px solid var(--rim);background:radial-gradient(60% 80% at 50% 100%,rgba(79,191,134,.07),transparent 70%)}
 .contact-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:start}

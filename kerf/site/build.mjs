@@ -12,6 +12,9 @@ for (const n of names) {
   const p = `${imgDir}/${n}.webp`;
   if (existsSync(p)) { have[n] = true; copyFileSync(p, `${OUT}/images/${n}.webp`); }
 }
+rmSync(`${OUT}/walkthrough`, { recursive: true, force: true });
+mkdirSync(`${OUT}/walkthrough`, { recursive: true });
+for (const f of readdirSync("walkthrough")) copyFileSync(`walkthrough/${f}`, `${OUT}/walkthrough/${f}`);
 const logos = {}; // no partner logos on the site
 const css = readFileSync("src/styles.css", "utf8");
 const markSvg = readFileSync("../brand/kerf-logo-v2/Logos/kerf-mark.svg", "utf8");
@@ -25,13 +28,14 @@ if (OUT === "dist-draft" && existsSync("src/pricing.local.js")) {
   pricing = (await import("data:text/javascript;base64," + Buffer.from(pr.outputFiles[0].text).toString("base64"))).default;
 }
 console.log("pricing draft:", pricing ? "included (local file)" : "not included");
-import { TREE } from "./src/content.js";
+import { TREE, CASE } from "./src/content.js";
 const meta = {
   index: [TREE.title, TREE.description],
+  case: [CASE.title, CASE.description],
   privacy: ["Privacy. Kerf.", "Kerf privacy page. Pending legal review."],
   terms: ["Terms. Kerf.", "Kerf terms page. Pending legal review."],
 };
-for (const page of ["index", "privacy", "terms"]) {
+for (const page of ["index", "case", "privacy", "terms"]) {
   const r = await build({
     entryPoints: ["src/main.jsx"], bundle: true, minify: true, write: false, format: "iife", jsx: "automatic", target: ["es2019"],
     define: { "process.env.NODE_ENV": '"production"', "__KERF_IMAGES__": JSON.stringify(have), "__KERF_LOGOS__": JSON.stringify(logos), "__KERF_PAGE__": JSON.stringify(page), "__KERF_PRICING__": JSON.stringify(pricing), "__KERF_MARK__": JSON.stringify(markSvg), "__KERF_MARK_MONO__": JSON.stringify(markMono) },
