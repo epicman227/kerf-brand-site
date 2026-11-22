@@ -156,4 +156,3 @@ p{margin:0 0 16px}
   .foot nav{margin-left:0}
 }
 
-.soon{display:inline-block;margin-left:10px;padding:2px 8px;border:1px solid color-mix(in srgb,var(--hue,#C98BDC) 55%,transparent);border-radius:999px;font:500 11px/1.4 var(--mono,"JetBrains Mono",monospace);letter-spacing:.08em;text-transform:uppercase;color:var(--hue,#C98BDC);vertical-align:middle}

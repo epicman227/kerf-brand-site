@@ -1,9 +1,7 @@
 // Page content for the Kerf site. One page. Source: the approved brief on KERA-477 (STRAT-6):
 // "Positioning brief v2" and "Website rewrite plan", look locked to D v2 Rings (KERA-524).
-// Rules: no invented testimonials, numbers or logos. Claims match the KERA-474 truth table (main e10e188).
-// KERA-591 rule: anything the table does not show as built says "Coming soon" (a third value, true, on a
-// suite item, or "soon" on a CRM name). Nothing else carries a status chip. Drop the flag when it ships.
-// QuickBooks Online and QuoteIQ are the only CRMs named. No Jobber. No price in this file: the
+// Rules: no invented testimonials, numbers or logos. No "coming soon", "planned" or "beta" on a feature.
+// QuoteIQ is the only CRM named until KERA-475 merges; then QuickBooks Online may return. No substitute label. No Jobber. No price in this file: the
 // cost and founding blocks come from src/pricing.local.js, which is not committed (see build.mjs).
 
 // PLACEHOLDER: Connor has not supplied the real booking link. Replace this one value.
@@ -46,7 +44,7 @@ export const TREE = {
         ["Social", "Review replies and posts, in your voice. You tap before they go."],
         ["Ads", "Campaigns drafted for the work you do. You confirm before they run."],
         ["Growth", "Where you rank, and a clear list of site fixes. You apply the fixes."],
-        ["Scouts", "People already asking for tree work, with a draft you can post. Kerf does not post it for you.", true],
+        ["Scouts", "People already asking for tree work, with a draft you can post. Kerf does not post it for you."],
         ["Referrals", "Kerf tracks a referral and queues the reward for your tap. It does not pay the reward."],
       ]],
     ],
@@ -64,8 +62,8 @@ export const TREE = {
   crm: {
     eyebrow: "The CRM you have",
     heading: "You keep estimating where you do now.",
-    body: "Kerf does not replace your CRM. It works with QuoteIQ today. QuickBooks Online is coming soon. Moving a card on the board does not write back to the CRM and does not send anything.",
-    names: [["QuoteIQ"], ["QuickBooks Online", true]],
+    body: "Kerf does not replace your CRM. It works with QuoteIQ. Moving a card on the board does not write back to the CRM and does not send anything.",
+    names: ["QuoteIQ"],
   },
   week: {
     eyebrow: "How a week works",
@@ -89,7 +87,7 @@ export const TREE = {
         "If that move is not done, forward the number to a Quo number. Calls still come in, and Kerf still gets them. Forwarding is the fallback.",
         "A personal cell can stay personal. Kerf will not ask you to move it. You can forward missed calls from it instead.",
       ]],
-      ["What CRM do I need?", ["The one you estimate in now. Kerf does not replace it. Kerf works with QuoteIQ today. QuickBooks Online is coming soon. You keep estimating there. Moving a card does not write back and does not send."]],
+      ["What CRM do I need?", ["The one you estimate in now. Kerf does not replace it. Kerf works with QuoteIQ. You keep estimating there. Moving a card does not write back and does not send."]],
       ["What will I see on a call?", ["North Fork Arbor Care, a made-up company. Not your books. Nothing is sent while we look."]],
       ["Is there an app store app?", ["No. It is the phone browser. Add to Home Screen."]],
     ],
@@ -116,7 +114,7 @@ export const TREE = {
     note: "Or leave your details and we will reach out.",
     success: "Got it. We will be in touch.",
     failure: "That did not go through. Please try again in a minute.",
-    systems: ["QuickBooks Online", "QuoteIQ", "Something else"],
+    systems: ["QuoteIQ", "Something else"],
   },
   footer: "Kerf. Built by an arborist, for arborists.",
 };
