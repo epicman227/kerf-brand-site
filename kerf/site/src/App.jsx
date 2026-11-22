@@ -143,9 +143,9 @@ function Suite({ s }) {
         <div key={g} className="group">
           <h3 className="group-t" data-reveal>{g}</h3>
           <ul className="cards">
-            {items.map(([t, b], i) => (
+            {items.map(([t, b, soon], i) => (
               <li key={t} className="card" data-reveal style={{ transitionDelay: `${(i % 3) * 70}ms` }}>
-                <h3>{t}</h3><p>{b}</p>
+                <h3>{t}{soon && <span className="soon">Coming soon</span>}</h3><p>{b}</p>
               </li>
             ))}
           </ul>
@@ -176,7 +176,7 @@ function Crm({ c }) {
         <div data-reveal><p className="eyebrow">{c.eyebrow}</p><h2>{c.heading}</h2></div>
         <div data-reveal style={{ transitionDelay: "100ms" }}>
           <p className="lead">{c.body}</p>
-          <div className="chips">{c.names.map((n) => <span key={n} className="chip">{n}</span>)}</div>
+          <div className="chips">{c.names.map(([n, soon]) => <span key={n} className="chip">{n}{soon && <span className="soon">Coming soon</span>}</span>)}</div>
         </div>
       </div>
     </Band>
