@@ -253,6 +253,79 @@ function Screens({ shots }) {
   );
 }
 
+function Walkthrough({ w }) {
+  if (!w) return null;
+  return (
+    <Band id="walkthrough" hue="#C98BDC">
+      <div className="sec-head" data-reveal><p className="eyebrow">{w.eyebrow}</p><h2>{w.heading}</h2><p className="lead">{w.lead}</p></div>
+      <ol className="walk">
+        {w.steps.map((st, i) => (
+          <li key={st.file} className="walk-step" data-reveal style={{ transitionDelay: `${i * 90}ms` }}>
+            <span className="num">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{st.title}</h3>
+            <p>{st.body}</p>
+            <picture>
+              <source media="(min-width: 700px)" srcSet={`walkthrough/${st.file}-1440.webp`} width="1440" height="900" />
+              <img src={`walkthrough/${st.file}-390.webp`} width="780" height="1688" alt={st.alt} />
+            </picture>
+          </li>
+        ))}
+      </ol>
+    </Band>
+  );
+}
+
+function CaseStudy({ c, page }) {
+  return (
+    <>
+      <header className="nav solid" id="top"><div className="wrap nav-in"><a href="index.html" className="brand" aria-label="Kerf home"><Mark size={32} /><span>kerf</span></a></div></header>
+      <main>
+        <section className="hero case-hero" style={{ "--hue": "#4FBF86" }}><div className="wrap">
+          <p className="draft-flag">{c.draftNote}</p>
+          <p className="eyebrow">{c.eyebrow}</p>
+          <h1>{c.headline[0]} <span className="grad">{c.headline[1]}</span></h1>
+          <p className="lead">{c.sub}</p>
+        </div></section>
+        <Band id="shop" hue="#B5CB6A">
+          <div className="split">
+            <div data-reveal><p className="eyebrow">{c.shop.eyebrow}</p><h2>{c.shop.heading}</h2></div>
+            <div data-reveal>{c.shop.body.map((p, i) => <p key={i} className="lead">{p}</p>)}</div>
+          </div>
+        </Band>
+        <Band id="does" hue="#C98BDC">
+          <div className="sec-head" data-reveal><p className="eyebrow">{c.does.eyebrow}</p><h2>{c.does.heading}</h2></div>
+          <div className="cards">
+            {c.does.items.map(([t, b], i) => (
+              <div key={t} className="card" data-reveal style={{ transitionDelay: `${i * 70}ms` }}><h3>{t}</h3><p>{b}</p></div>
+            ))}
+          </div>
+        </Band>
+        <Band id="numbers" hue="#9FB4CF">
+          <div className="sec-head" data-reveal><p className="eyebrow">{c.numbers.eyebrow}</p><h2>{c.numbers.heading}</h2></div>
+          <div className="ledger" data-reveal>
+            {c.numbers.rows.map(([a, b, n]) => (
+              <div key={a} className={`ledger-row ${b === "TBC" ? "tbc" : ""}`}><span className="l-a">{a}</span><span className="l-b">{b}</span><span className="l-n">{n}</span></div>
+            ))}
+          </div>
+          <p className="callout" data-reveal>{c.numbers.note}</p>
+        </Band>
+        <Band id="quote" hue="#BFAD90">
+          <div className="split">
+            <div data-reveal><p className="eyebrow">{c.quote.eyebrow}</p><h2>{c.quote.heading}</h2></div>
+            <div data-reveal><p className="lead tbc-text">{c.quote.body}</p></div>
+          </div>
+        </Band>
+        <Walkthrough w={page.walkthrough} />
+        <section className="close"><div className="wrap" data-reveal>
+          <h2>{c.close.heading}</h2><p className="lead">{c.close.sub}</p>
+          <Ask>{c.close.ask}</Ask>
+        </div></section>
+      </main>
+      <Footer page={page} />
+    </>
+  );
+}
+
 function Contact({ page }) {
   const [status, setStatus] = useState("idle");
   const submit = async (e) => {
@@ -325,12 +398,12 @@ function Legal({ doc }) {
   );
 }
 
-export default function App({ page, legal, pricing }) {
+export default function App({ page, legal, pricing, caseStudy }) {
   useReveal();
   return (
     <>
       <div className="bg" aria-hidden="true"><i className="glow" /><i className="rings" /><i className="grain" /><i className="film-grain" /></div>
-      {legal ? <Legal doc={legal} /> : (
+      {legal ? <Legal doc={legal} /> : caseStudy ? <CaseStudy c={caseStudy} page={page} /> : (
         <>
           <Nav />
           <main>
@@ -342,6 +415,7 @@ export default function App({ page, legal, pricing }) {
             {pricing && pricing.founding && <Founding f={pricing.founding} />}
             <Week w={page.week} />
             <Faq f={page.faq} />
+            <Walkthrough w={page.walkthrough} />
             <Screens shots={page.screens} />
             <Contact page={page} />
           </main>

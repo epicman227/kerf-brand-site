@@ -92,7 +92,18 @@ export const TREE = {
       ["Is there an app store app?", ["No. It is the phone browser. Add to Home Screen."]],
     ],
   },
-  // Product shots. Stays empty until captures of the KERA-526 build exist. Nothing renders while empty.
+  // Three step walkthrough strip (KERA-576). Captures of the KERA-526 Rings build on the North Fork seed,
+  // made-up company, dark default. Each step has a 390 wide and a 1440 wide capture in walkthrough/.
+  walkthrough: {
+    eyebrow: "See it",
+    heading: "Three screens. One week of work.",
+    lead: "North Fork Arbor Care is a made-up company. These are screens from the Kerf demo, not a real customer.",
+    steps: [
+      { file: "board", title: "It lands on the board", body: "Calls, texts, and estimates sit on one board with a score. Who to call next is at the top.", alt: "The Kerf pipeline board for North Fork Arbor Care, with a short list of who to call next and deals by stage." },
+      { file: "draft", title: "You tap", body: "The next text is drafted in your voice. You send it, edit it, or skip it.", alt: "A Kerf inbox card with a customer message, a drafted reply, and the Send, Edit and Skip buttons." },
+      { file: "report", title: "You see where it came from", body: "The report shows your funnel and what each source paid.", alt: "The Kerf reports page with call and estimate alerts above a funnel from lead to won." },
+    ],
+  },
   screens: [],
   close: {
     heading: "Reply for a 20 minute look.",
@@ -127,5 +138,57 @@ export const LEGAL = {
       "Nothing on this site is an offer, a price, or a guarantee.",
       "The final terms will replace this page after legal review.",
     ],
+  },
+};
+
+// Saw and Order case study, DRAFT (KERA-576). Local draft only: not linked from the site, not published.
+// Every fact below traces to a repo doc named in the PR. Anything unsourced is the string "TBC" and
+// renders as a marked gap. Do not fill a TBC without Connor's data or written confirmation.
+export const CASE = {
+  title: "Saw and Order Tree Care. Kerf case study (draft).",
+  description: "How one Front Range tree company runs its follow-up, postcards, and reporting on Kerf. Draft.",
+  draftNote: "Draft. Not published. Every line marked TBC has no source yet.",
+  eyebrow: "Case study",
+  headline: ["One tree company.", "One place for the work."],
+  sub: "Kerf started as the system behind Saw and Order Tree Care, a Front Range tree company. Here is what it does there, and what we have not measured yet.",
+  shop: {
+    eyebrow: "The shop",
+    heading: "A working tree company.",
+    body: [
+      "Saw and Order Tree Care is a Front Range tree care company. Connor Grovenor is the owner and operator, and an ISA Certified Arborist.",
+      "He estimates in QuoteIQ and runs the business phone on Quo. Kerf reads both, so the work lives in one place without moving the shop off its tools.",
+    ],
+  },
+  does: {
+    eyebrow: "What Kerf does there",
+    heading: "The core, in daily use.",
+    items: [
+      ["A scored board", "Leads and estimates from QuoteIQ and Quo become scored deals on one board, with who to call next at the top."],
+      ["Drafts in his voice", "Replies, follow-ups, and review asks are drafted in his voice. Each one is sent on his tap."],
+      ["Neighbors postcards", "For each upcoming QuoteIQ job, postcards are drafted for the nearest homes. The homes come from free county parcel data, and nothing mails without his tap."],
+      ["Reports and business health", "Funnel, sources, reply speed, and a business health view, built every night."],
+    ],
+  },
+  numbers: {
+    eyebrow: "The numbers",
+    heading: "What is sourced, and what is not.",
+    note: "TBC means we have no source yet. We would rather show a gap than a guess.",
+    rows: [
+      ["Paid jobs in QuoteIQ, as of November 2026", "68", "A running count, from the Kerf product docs. Not a monthly figure."],
+      ["Leads per week", "TBC", "Needs a report export from the shop."],
+      ["Median reply time", "TBC", "Needs a report export from the shop."],
+      ["Jobs won from follow-up", "TBC", "Needs Connor's confirmation."],
+      ["Jobs traced to a postcard", "TBC", "Needs Connor's confirmation."],
+    ],
+  },
+  quote: {
+    eyebrow: "In his words",
+    heading: "Owner quote",
+    body: "TBC. A quote goes here only when Connor writes it or approves it in writing.",
+  },
+  close: {
+    heading: "See it on a made-up company.",
+    sub: "We show you Kerf on North Fork Arbor Care. No real customer data is on screen.",
+    ask: "Book 20 minutes",
   },
 };
