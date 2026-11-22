@@ -105,7 +105,82 @@ export const TREE = {
     failure: "That did not go through. Please try again in a minute.",
     systems: ["QuickBooks Online", "QuoteIQ", "Something else"],
   },
+  teaser: {
+    eyebrow: "Pricing and founding customers",
+    heading: "See the plan, or be one of the first few.",
+    body: "How Kerf is priced, next to the phone bill. And what the first 3 to 5 companies get.",
+    links: [["Pricing", "pricing.html"], ["Founding customers", "founding.html"]],
+  },
   footer: "Kerf. Built by an arborist, for arborists.",
+};
+
+// Two more pages (KERA-571). No dollar figure in this file. The pricing proposal numbers live in
+// src/pricing.local.js (gitignored) and appear only in the dist-draft build.
+export const PRICING = {
+  file: "pricing",
+  title: "Kerf. Pricing.",
+  description: "How Kerf is priced, next to the phone bill and what a missed job costs.",
+  eyebrow: "Pricing",
+  heading: "One plan. Two bills.",
+  sub: "You pay Kerf for the system. You pay Quo for the phone. Here is both, side by side.",
+  pendingNote: "Pricing is being finalized. Reply for a 20 minute look and we will walk you through it.",
+  draftBanner: "Draft proposal. Not final. The numbers on this page are a placeholder until Connor sets the price.",
+  includedHeading: "What the plan covers",
+  included: [
+    "The board, drafts in your voice, follow-up, the report, and business health",
+    "Neighbors postcards, Social, Ads, Growth, Scouts, and analytics",
+    "Referrals tracked, with the reward queued for your tap",
+    "Approval first. Nothing goes out until you tap",
+  ],
+  notIncludedHeading: "What it does not cover",
+  notIncluded: [
+    "Your Quo bill. You pay Quo for the phone",
+    "Ad spend. You pay the ad network, not Kerf",
+    "Extra Quo credits for Sona, if you use more than Quo includes",
+  ],
+  more: "Questions about the plan? Reply for a look and ask in person.",
+};
+
+export const FOUNDING_PAGE = {
+  file: "founding",
+  title: "Kerf. Founding customers.",
+  description: "The first few tree companies to run on Kerf. What you get, what we ask, and who it fits.",
+  eyebrow: "Founding customers",
+  heading: "Be one of the first few.",
+  sub: "We are taking the first 3 to 5 tree companies. You get Kerf on better terms. We get your honest notes.",
+  getHeading: "What you get",
+  get: [
+    ["No setup fee", "The first 3 to 5 companies skip the setup fee."],
+    ["Same monthly price", "The monthly price stays the same."],
+    ["The whole suite", "The board, drafts, follow-up, report, business health, and the growth tools."],
+    ["Month to month", "No contract. No refund."],
+  ],
+  askHeading: "What we ask",
+  ask: [
+    ["A case study", "A case study we can publish later."],
+    ["A weekly note", "A short weekly note from you on what broke."],
+  ],
+  askNote: "Your Quo bill is not waived. You pay Quo for the phone.",
+  fitHeading: "Who it fits",
+  fit: [
+    "Owners of 1 to 5 truck tree companies",
+    "A business phone on Quo, or ready to move the work number onto Quo",
+    "QuickBooks Online or QuoteIQ for estimates",
+  ],
+  nextHeading: "What happens next",
+  next: [
+    ["You reply", "Leave your details below, or use the booking link on the home page."],
+    ["A 20 minute look", "We show you Kerf on North Fork Arbor Care, a made-up company. No real customer data is on screen."],
+    ["You decide", "If it fits, we talk through setup. If it does not, you have lost 20 minutes."],
+  ],
+  form: {
+    heading: "Tell us about your shop",
+    note: "This form is a draft. It is not connected to anything yet, and nothing you type here is saved or sent.",
+    notConnected: "Draft only. This form is not connected yet, so nothing was sent.",
+    trucks: ["1 truck", "2 to 3 trucks", "4 to 5 trucks", "More than 5"],
+    quo: ["Yes, on Quo now", "Not yet, but willing to move", "No"],
+    submit: "Send",
+  },
 };
 
 const PENDING = "Pending legal review. This page is a placeholder, not final, and not legal advice.";
