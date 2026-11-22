@@ -165,7 +165,7 @@ export const CASE = {
     items: [
       ["A scored board", "Leads and estimates from QuoteIQ and Quo become scored deals on one board, with who to call next at the top."],
       ["Drafts in his voice", "Replies, follow-ups, and review asks are drafted in his voice. Each one is sent on his tap."],
-      ["Neighbors postcards", "After a job, a postcard is drafted for nearby homes. The homes come from county parcel data, and nothing mails without his tap."],
+      ["Neighbors postcards", "For each upcoming QuoteIQ job, postcards are drafted for the nearest homes. The homes come from free county parcel data, and nothing mails without his tap."],
       ["Reports and business health", "Funnel, sources, reply speed, and a business health view, built every night."],
     ],
   },
@@ -174,7 +174,7 @@ export const CASE = {
     heading: "What is sourced, and what is not.",
     note: "TBC means we have no source yet. We would rather show a gap than a guess.",
     rows: [
-      ["Paid jobs, November 2026", "68", "Counted in QuoteIQ, from the Kerf product docs."],
+      ["Paid jobs in QuoteIQ, as of November 2026", "68", "A running count, from the Kerf product docs. Not a monthly figure."],
       ["Leads per week", "TBC", "Needs a report export from the shop."],
       ["Median reply time", "TBC", "Needs a report export from the shop."],
       ["Jobs won from follow-up", "TBC", "Needs Connor's confirmation."],

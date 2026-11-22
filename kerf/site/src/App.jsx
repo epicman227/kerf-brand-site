@@ -266,7 +266,7 @@ function Walkthrough({ w }) {
             <p>{st.body}</p>
             <picture>
               <source media="(min-width: 700px)" srcSet={`walkthrough/${st.file}-1440.webp`} width="1440" height="900" />
-              <img src={`walkthrough/${st.file}-390.webp`} width="780" height="1688" alt={st.alt} loading="lazy" />
+              <img src={`walkthrough/${st.file}-390.webp`} width="780" height="1688" alt={st.alt} />
             </picture>
           </li>
         ))}
