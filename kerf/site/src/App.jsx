@@ -481,7 +481,7 @@ function FoundingPage({ pg }) {
                 <select name="trucks" defaultValue=""><option value="" disabled>Choose one</option>{pg.form.trucks.map((x) => <option key={x}>{x}</option>)}</select>
               </label>
               <label>What do you estimate in?
-                <select name="system" defaultValue=""><option value="" disabled>Choose one</option>{["QuickBooks Online", "QuoteIQ", "Something else"].map((x) => <option key={x}>{x}</option>)}</select>
+                <select name="system" defaultValue=""><option value="" disabled>Choose one</option>{["QuoteIQ", "Something else"].map((x) => <option key={x}>{x}</option>)}</select>
               </label>
               <label>Are you on Quo?
                 <select name="quo" defaultValue=""><option value="" disabled>Choose one</option>{pg.form.quo.map((x) => <option key={x}>{x}</option>)}</select>
