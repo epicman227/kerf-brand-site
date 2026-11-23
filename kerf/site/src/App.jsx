@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { BOOK_URL, BOOK_IS_PLACEHOLDER, FORM_ENDPOINT, HERO_VIDEO } from "./content.js";
+import { BOOK_URL, BOOK_IS_PLACEHOLDER, FORM_ENDPOINT, HERO_VIDEO, PRICING, FOUNDING_PAGE } from "./content.js";
 import { submitLead } from "./form.js";
 
 const MARK = typeof __KERF_MARK__ !== "undefined" ? __KERF_MARK__ : "";
@@ -51,7 +51,7 @@ function Band({ id, hue, children, className = "" }) {
 
 /* ---------- nav ---------- */
 
-function Nav() {
+function Nav({ home = true }) {
   const [open, setOpen] = useState(false);
   const [p, setP] = useState(0);
   const [solid, setSolid] = useState(false);
@@ -66,18 +66,19 @@ function Nav() {
     window.addEventListener("scroll", f, { passive: true });
     return () => window.removeEventListener("scroll", f);
   }, []);
-  const links = [["#suite", "The suite"], ["#quo", "Quo"], ["#week", "How a week works"], ["#faq", "FAQ"]];
+  const pre = home ? "" : "index.html";
+  const links = [[`${pre}#suite`, "The suite"], [`${pre}#quo`, "Quo"], ["pricing.html", "Pricing"], ["founding.html", "Founding customers"], [`${pre}#faq`, "FAQ"]];
   return (
     <header className={`nav ${solid ? "solid" : ""}`} id="top">
       <div className="progress" style={{ transform: `scaleX(${p})` }} />
       <div className="wrap nav-in">
-        <a href="#top" className="brand" aria-label="Kerf home"><Mark size={32} /><span>kerf</span></a>
+        <a href={home ? "#top" : "index.html"} className="brand" aria-label="Kerf home"><Mark size={32} /><span>kerf</span></a>
         <nav className="nav-links" aria-label="Primary">{links.map(([h, t]) => <a key={h} href={h}>{t}</a>)}</nav>
         <button className={`burger ${open ? "x" : ""}`} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}><span /><span /></button>
       </div>
       <div className={`sheet ${open ? "open" : ""}`}>
         {links.map(([h, t]) => <a key={h} href={h} onClick={() => setOpen(false)}>{t}</a>)}
-        <a href="#contact" onClick={() => setOpen(false)}>Reply for a look</a>
+        <a href={`${pre}#contact`} onClick={() => setOpen(false)}>Reply for a look</a>
       </div>
     </header>
   );
@@ -369,13 +370,140 @@ function Contact({ page }) {
   );
 }
 
+
+function Teaser({ t }) {
+  return (
+    <Band id="plans" hue="#9FB4CF">
+      <div className="split">
+        <div data-reveal><p className="eyebrow">{t.eyebrow}</p><h2>{t.heading}</h2></div>
+        <div data-reveal style={{ transitionDelay: "100ms" }}>
+          <p className="lead">{t.body}</p>
+          <div className="chips">{t.links.map(([n, h]) => <a key={n} className="chip" href={h}>{n}</a>)}</div>
+        </div>
+      </div>
+    </Band>
+  );
+}
+
+function List({ items }) {
+  return <ul className="ticks">{items.map((i) => <li key={i}>{i}</li>)}</ul>;
+}
+
+function PricingPage({ pg, pricing }) {
+  const plan = pricing && pricing.plan;
+  return (
+    <>
+      <Nav home={false} />
+      <main>
+        <section className="band" style={{ "--hue": "#9FB4CF" }}>
+          <div className="wrap">
+            <div className="sec-head">
+              <p className="eyebrow">{pg.eyebrow}</p>
+              <h1 className="display">{pg.heading}</h1>
+              <p className="lead">{pg.sub}</p>
+              {plan ? <p className="draftbar" role="note">{pg.draftBanner}</p> : <p className="callout">{pg.pendingNote}</p>}
+            </div>
+            {plan && (
+              <div className="plan card" data-reveal>
+                <p className="eyebrow">Kerf</p>
+                <p className="price"><b>{plan.price}</b> <span>{plan.per}</span></p>
+                <p className="plan-n">{plan.setup}. {plan.founding}.</p>
+                <p className="plan-n">{plan.term}</p>
+              </div>
+            )}
+          </div>
+        </section>
+        <Band hue="#C98BDC">
+          <div className="split">
+            <div data-reveal><h2>{pg.includedHeading}</h2><List items={pg.included} /></div>
+            <div data-reveal style={{ transitionDelay: "100ms" }}><h2>{pg.notIncludedHeading}</h2><List items={pg.notIncluded} /></div>
+          </div>
+        </Band>
+        {pricing && pricing.cost && <Cost c={pricing.cost} />}
+        <section className="close">
+          <div className="wrap" data-reveal>
+            <h2>Want the walk-through?</h2>
+            <p className="lead">{pg.more}</p>
+            <Ask>Reply for a 20 minute look</Ask>
+            <p className="fine"><a className="textlink" href="founding.html">See the founding customer terms</a></p>
+          </div>
+        </section>
+      </main>
+      <Footer page={{ footer: "Kerf. Built by an arborist, for arborists." }} />
+    </>
+  );
+}
+
+function FoundingPage({ pg }) {
+  const [shown, setShown] = useState(false);
+  const submit = (e) => { e.preventDefault(); setShown(true); }; // not wired: no fetch, nothing saved or sent
+  return (
+    <>
+      <Nav home={false} />
+      <main>
+        <section className="band" style={{ "--hue": "#BFAD90" }}>
+          <div className="wrap">
+            <div className="sec-head">
+              <p className="eyebrow">{pg.eyebrow}</p>
+              <h1 className="display">{pg.heading}</h1>
+              <p className="lead">{pg.sub}</p>
+            </div>
+            <h2 data-reveal>{pg.getHeading}</h2>
+            <ul className="cards four">{pg.get.map(([t, b], i) => <li key={t} className="card" data-reveal style={{ transitionDelay: `${i * 70}ms` }}><h3>{t}</h3><p>{b}</p></li>)}</ul>
+          </div>
+        </section>
+        <Band hue="#B5CB6A">
+          <div className="split">
+            <div data-reveal>
+              <h2>{pg.askHeading}</h2>
+              <ul className="cards two">{pg.ask.map(([t, b]) => <li key={t} className="card"><h3>{t}</h3><p>{b}</p></li>)}</ul>
+              <p className="callout">{pg.askNote}</p>
+            </div>
+            <div data-reveal style={{ transitionDelay: "100ms" }}>
+              <h2>{pg.fitHeading}</h2>
+              <List items={pg.fit} />
+            </div>
+          </div>
+        </Band>
+        <Band hue="#66B8E8">
+          <div className="sec-head" data-reveal><h2>{pg.nextHeading}</h2></div>
+          <ol className="steps">{pg.next.map(([t, b], i) => <li key={t} className="card" data-reveal style={{ transitionDelay: `${i * 90}ms` }}><span className="num">{String(i + 1).padStart(2, "0")}</span><h3>{t}</h3><p>{b}</p></li>)}</ol>
+        </Band>
+        <section className="close" id="contact">
+          <div className="wrap contact-in">
+            <div data-reveal><h2>{pg.form.heading}</h2><p className="draftbar" role="note">{pg.form.note}</p></div>
+            <form className="form" data-reveal style={{ transitionDelay: "120ms" }} onSubmit={submit} noValidate>
+              <label>Name<input name="name" autoComplete="name" /></label>
+              <label>Company<input name="company" autoComplete="organization" /></label>
+              <label>Phone<input name="phone" type="tel" autoComplete="tel" /></label>
+              <label>Email<input name="email" type="email" autoComplete="email" /></label>
+              <label>How many trucks?
+                <select name="trucks" defaultValue=""><option value="" disabled>Choose one</option>{pg.form.trucks.map((x) => <option key={x}>{x}</option>)}</select>
+              </label>
+              <label>What do you estimate in?
+                <select name="system" defaultValue=""><option value="" disabled>Choose one</option>{["QuickBooks Online", "QuoteIQ", "Something else"].map((x) => <option key={x}>{x}</option>)}</select>
+              </label>
+              <label>Are you on Quo?
+                <select name="quo" defaultValue=""><option value="" disabled>Choose one</option>{pg.form.quo.map((x) => <option key={x}>{x}</option>)}</select>
+              </label>
+              <button className="btn btn-ghost" type="submit">{pg.form.submit}</button>
+              {shown && <p className="fine" role="status">{pg.form.notConnected}</p>}
+            </form>
+          </div>
+        </section>
+      </main>
+      <Footer page={{ footer: "Kerf. Built by an arborist, for arborists." }} />
+    </>
+  );
+}
+
 function Footer({ page }) {
   return (
     <footer className="foot">
       <div className="wrap foot-in">
         <div className="brand"><Mark size={26} /><span>kerf</span></div>
         <p>{page.footer}</p>
-        <nav aria-label="Footer"><a href="#suite">The suite</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+        <nav aria-label="Footer"><a href="index.html#suite">The suite</a><a href="pricing.html">Pricing</a><a href="founding.html">Founding customers</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
         <small>© 2026 Kerf</small>
       </div>
     </footer>
@@ -398,12 +526,12 @@ function Legal({ doc }) {
   );
 }
 
-export default function App({ page, legal, pricing, caseStudy }) {
+export default function App({ page, legal, pricing, caseStudy, view = "index" }) {
   useReveal();
   return (
     <>
       <div className="bg" aria-hidden="true"><i className="glow" /><i className="rings" /><i className="grain" /><i className="film-grain" /></div>
-      {legal ? <Legal doc={legal} /> : caseStudy ? <CaseStudy c={caseStudy} page={page} /> : (
+      {view === "pricing" ? <PricingPage pg={PRICING} pricing={pricing} /> : view === "founding" ? <FoundingPage pg={FOUNDING_PAGE} /> : legal ? <Legal doc={legal} /> : caseStudy ? <CaseStudy c={caseStudy} page={page} /> : (
         <>
           <Nav />
           <main>
@@ -413,6 +541,7 @@ export default function App({ page, legal, pricing, caseStudy }) {
             <Crm c={page.crm} />
             {pricing && pricing.cost && <Cost c={pricing.cost} />}
             {pricing && pricing.founding && <Founding f={pricing.founding} />}
+            <Teaser t={page.teaser} />
             <Week w={page.week} />
             <Faq f={page.faq} />
             <Walkthrough w={page.walkthrough} />
