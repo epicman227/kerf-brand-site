@@ -164,7 +164,7 @@ export const FOUNDING_PAGE = {
     ["No setup fee", "The first 3 to 5 companies skip the setup fee."],
     ["Same monthly price", "The monthly price stays the same."],
     ["The whole suite", "The board, drafts, follow-up, report, business health, and the growth tools."],
-    ["Month to month", "No contract. No refund."],
+    ["Month to month", "No contract. Cancel any month."],
   ],
   askHeading: "What we ask",
   ask: [
@@ -176,7 +176,7 @@ export const FOUNDING_PAGE = {
   fit: [
     "Owners of 1 to 5 truck tree companies",
     "A business phone on Quo, or ready to move the work number onto Quo",
-    "QuickBooks Online or QuoteIQ for estimates",
+    "QuoteIQ for estimates",
   ],
   nextHeading: "What happens next",
   next: [
