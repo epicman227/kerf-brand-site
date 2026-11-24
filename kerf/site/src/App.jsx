@@ -292,6 +292,12 @@ function CaseStudy({ c, page }) {
             <div data-reveal>{c.shop.body.map((p, i) => <p key={i} className="lead">{p}</p>)}</div>
           </div>
         </Band>
+        <Band id="problem" hue="#E0A458">
+          <div className="split">
+            <div data-reveal><p className="eyebrow">{c.problem.eyebrow}</p><h2>{c.problem.heading}</h2></div>
+            <div data-reveal>{c.problem.body.map((p, i) => <p key={i} className="lead">{p}</p>)}</div>
+          </div>
+        </Band>
         <Band id="does" hue="#C98BDC">
           <div className="sec-head" data-reveal><p className="eyebrow">{c.does.eyebrow}</p><h2>{c.does.heading}</h2></div>
           <div className="cards">
