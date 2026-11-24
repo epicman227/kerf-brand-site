@@ -159,8 +159,16 @@ export const CASE = {
       "He estimates in QuoteIQ and runs the business phone on Quo. Kerf reads both, so the work lives in one place without moving the shop off its tools.",
     ],
   },
+  problem: {
+    eyebrow: "The problem",
+    heading: "Two tools, no single view.",
+    body: [
+      "Estimates live in QuoteIQ. Calls and texts live in Quo. Neither one tells the owner who to call next, so follow-up depends on remembering.",
+      "TBC. How much follow-up was slipping before Kerf has no source yet. Needs Connor's account in his words.",
+    ],
+  },
   does: {
-    eyebrow: "What Kerf does there",
+    eyebrow: "What Kerf changed",
     heading: "The core, in daily use.",
     items: [
       ["A scored board", "Leads and estimates from QuoteIQ and Quo become scored deals on one board, with who to call next at the top."],
