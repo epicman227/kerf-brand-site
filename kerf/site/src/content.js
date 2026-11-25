@@ -192,3 +192,37 @@ export const CASE = {
     ask: "Book 20 minutes",
   },
 };
+
+// Invite-only beta page (KERA-826). Draft. The form stub sends nowhere: no endpoint, no vendor key.
+// No price, no count of beta spots, no customer names. The CRM list matches the rest of the site.
+export const BETA = {
+  title: "Kerf beta. Invite only.",
+  description: "Kerf is in an invite-only beta for tree care companies. Ask for access.",
+  draft: "Draft. Not published. The form below sends nowhere yet.",
+  eyebrow: "Invite-only beta",
+  headline: ["Try Kerf before", "everyone else does."],
+  sub: "We are letting in tree care companies a few at a time. Ask for access and we reach out to set up a call.",
+  get: {
+    eyebrow: "What you get",
+    heading: "The board, set up with you.",
+    items: [
+      ["Your board, set up on a call", "One call with the founder, an ISA Certified Arborist. Your calls, texts, and estimates land on one scored board."],
+      ["Drafts in your voice", "The next text is written for you. You send, edit, or skip. Nothing goes out until you tap."],
+      ["The weekly report", "Leads, how fast you replied, estimates, jobs won, and what each source paid."],
+      ["Your say in what we build", "Beta companies tell us what is missing and it goes on the list."],
+    ],
+  },
+  who: {
+    eyebrow: "Who it is for",
+    heading: "Owner-run tree care companies.",
+    body: "You estimate in QuickBooks Online or QuoteIQ, and run your phone on Quo, or are willing to. Kerf works with the CRM you have. It does not replace it.",
+  },
+  form: {
+    heading: "Ask for access.",
+    sub: "Four fields. An invite is not guaranteed.",
+    systems: ["QuickBooks Online", "QuoteIQ", "Something else", "None yet"],
+    stubNote: "Draft form. It does not send yet, so nothing you type here leaves this page.",
+    stubDone: "Draft only. Nothing was sent. When the page goes live this will send your request.",
+  },
+  footer: "Kerf. Built by an arborist, for arborists.",
+};
