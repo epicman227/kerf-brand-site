@@ -65,10 +65,12 @@ p{margin:0 0 16px}
 .burger span+span{top:25px}
 .burger.x span{top:21px;transform:rotate(45deg)}.burger.x span+span{transform:rotate(-45deg)}
 .sheet{display:none}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--heartwood);color:#0E1B1A;font-weight:600;padding:12px 18px;border-radius:var(--r-md);min-height:44px;display:inline-flex;align-items:center}.skip:focus{top:12px}
+main:focus{outline:none}
 @media (max-width:900px){
   .nav-links{display:none}.burger{display:block}
-  .sheet{display:grid;gap:4px;padding:0 20px;max-height:0;overflow:hidden;transition:max-height .35s var(--ease),padding .35s}
-  .sheet.open{max-height:420px;padding:8px 20px 20px}
+  .sheet{display:grid;gap:4px;padding:0 20px;max-height:0;overflow:hidden;visibility:hidden;transition:max-height .35s var(--ease),padding .35s,visibility 0s .35s}
+  .sheet.open{max-height:420px;padding:8px 20px 20px;visibility:visible;transition-delay:0s}
   .sheet a{padding:12px 4px;font-size:18px;border-bottom:1px solid var(--rim);min-height:44px}
 }
 

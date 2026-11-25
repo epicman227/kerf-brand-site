@@ -280,7 +280,7 @@ function CaseStudy({ c, page }) {
   return (
     <>
       <header className="nav solid" id="top"><div className="wrap nav-in"><a href="index.html" className="brand" aria-label="Kerf home"><Mark size={32} /><span>kerf</span></a></div></header>
-      <main>
+      <main id="main" tabIndex={-1}>
         <section className="hero case-hero" style={{ "--hue": "#4FBF86" }}><div className="wrap">
           <p className="draft-flag">{c.draftNote}</p>
           <p className="eyebrow">{c.eyebrow}</p>
@@ -394,7 +394,7 @@ function PricingPage({ pg, pricing }) {
   return (
     <>
       <Nav home={false} />
-      <main>
+      <main id="main" tabIndex={-1}>
         <section className="band" style={{ "--hue": "#9FB4CF" }}>
           <div className="wrap">
             <div className="sec-head">
@@ -440,7 +440,7 @@ function FoundingPage({ pg }) {
   return (
     <>
       <Nav home={false} />
-      <main>
+      <main id="main" tabIndex={-1}>
         <section className="band" style={{ "--hue": "#BFAD90" }}>
           <div className="wrap">
             <div className="sec-head">
@@ -514,7 +514,7 @@ function Legal({ doc }) {
   return (
     <>
       <header className="nav solid" id="top"><div className="wrap nav-in"><a href="index.html" className="brand" aria-label="Kerf home"><Mark size={32} /><span>kerf</span></a></div></header>
-      <main>
+      <main id="main" tabIndex={-1}>
         <section className="band" style={{ "--hue": "#BFAD90" }}><div className="wrap" style={{ maxWidth: 720 }}>
           <p className="eyebrow">Pending legal review</p>
           <h1>{doc.title}</h1>
@@ -530,11 +530,12 @@ export default function App({ page, legal, pricing, caseStudy, view = "index" })
   useReveal();
   return (
     <>
+      <a className="skip" href="#main">Skip to content</a>
       <div className="bg" aria-hidden="true"><i className="glow" /><i className="rings" /><i className="grain" /><i className="film-grain" /></div>
       {view === "pricing" ? <PricingPage pg={PRICING} pricing={pricing} /> : view === "founding" ? <FoundingPage pg={FOUNDING_PAGE} /> : legal ? <Legal doc={legal} /> : caseStudy ? <CaseStudy c={caseStudy} page={page} /> : (
         <>
           <Nav />
-          <main>
+          <main id="main" tabIndex={-1}>
             <Hero page={page} />
             <Suite s={page.suite} />
             <Quo q={page.quo} />
