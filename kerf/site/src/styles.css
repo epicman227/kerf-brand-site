@@ -155,3 +155,11 @@ p{margin:0 0 16px}
   .ledger-row{grid-template-columns:1fr;gap:4px}
   .foot nav{margin-left:0}
 }
+
+/* beta invite page (KERA-826) */
+.beta-hero{padding-top:clamp(56px,10vw,128px)}
+.beta-hero .btn{margin-top:8px}
+.beta-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.beta-list li{background:var(--surface);border:1px solid var(--rim);border-top-color:color-mix(in srgb,var(--hue) 38%,transparent);border-radius:var(--r-lg);padding:22px}
+.beta-list h3{margin:0 0 8px}.beta-list p{margin:0;color:var(--mist)}
+@media (max-width:900px){.beta-list{grid-template-columns:1fr}}

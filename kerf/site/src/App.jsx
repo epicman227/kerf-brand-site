@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { BOOK_URL, BOOK_IS_PLACEHOLDER, FORM_ENDPOINT, HERO_VIDEO } from "./content.js";
+import { BETA, BOOK_URL, BOOK_IS_PLACEHOLDER, FORM_ENDPOINT, HERO_VIDEO } from "./content.js";
 import { submitLead } from "./form.js";
 
 const MARK = typeof __KERF_MARK__ !== "undefined" ? __KERF_MARK__ : "";
@@ -375,7 +375,7 @@ function Footer({ page }) {
       <div className="wrap foot-in">
         <div className="brand"><Mark size={26} /><span>kerf</span></div>
         <p>{page.footer}</p>
-        <nav aria-label="Footer"><a href="#suite">The suite</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+        <nav aria-label="Footer"><a href="index.html#suite">The suite</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
         <small>© 2026 Kerf</small>
       </div>
     </footer>
@@ -398,12 +398,60 @@ function Legal({ doc }) {
   );
 }
 
-export default function App({ page, legal, pricing, caseStudy }) {
+
+function BetaPage({ b }) {
+  const [done, setDone] = useState(false);
+  // Stub: no fetch, no endpoint. It only shows the draft state.
+  const submit = (e) => { e.preventDefault(); if (e.target.checkValidity()) setDone(true); else e.target.reportValidity(); };
+  return (
+    <>
+      <header className="nav solid" id="top"><div className="wrap nav-in"><a href="index.html" className="brand" aria-label="Kerf home"><Mark size={32} /><span>kerf</span></a></div></header>
+      <main>
+        <section className="band beta-hero"><div className="wrap">
+          <p className="draft-flag">{b.draft}</p>
+          <p className="eyebrow">{b.eyebrow}</p>
+          <h1>{b.headline[0]} {b.headline[1]}</h1>
+          <p className="lead">{b.sub}</p>
+          <a className="btn btn-primary" href="#access">Ask for access</a>
+        </div></section>
+        <Band id="get">
+          <div className="sec-head" data-reveal><p className="eyebrow">{b.get.eyebrow}</p><h2>{b.get.heading}</h2></div>
+          <ul className="beta-list">{b.get.items.map(([t, d]) => <li key={t} data-reveal><h3>{t}</h3><p>{d}</p></li>)}</ul>
+        </Band>
+        <Band id="who">
+          <div className="sec-head" data-reveal><p className="eyebrow">{b.who.eyebrow}</p><h2>{b.who.heading}</h2><p className="lead">{b.who.body}</p></div>
+        </Band>
+        <section className="close" id="access"><div className="wrap contact-in">
+          <div data-reveal><h2>{b.form.heading}</h2><p className="lead">{b.form.sub}</p><p className="fine">{b.form.stubNote}</p></div>
+          <form className="form" data-reveal onSubmit={submit} noValidate={false}>
+            {done ? <div className="thanks" role="status"><strong>{b.form.stubDone}</strong></div> : (
+              <>
+                <label>Name<input required name="name" autoComplete="name" /></label>
+                <label>Company<input required name="company" autoComplete="organization" /></label>
+                <label>CRM you use
+                  <select required name="crm" defaultValue="">
+                    <option value="" disabled>Choose one</option>
+                    {b.form.systems.map((s) => <option key={s}>{s}</option>)}
+                  </select>
+                </label>
+                <label>Phone<input required name="phone" type="tel" autoComplete="tel" /></label>
+                <button className="btn btn-primary" type="submit">Ask for access</button>
+              </>
+            )}
+          </form>
+        </div></section>
+      </main>
+      <Footer page={b} />
+    </>
+  );
+}
+
+export default function App({ page, legal, pricing, caseStudy, beta }) {
   useReveal();
   return (
     <>
       <div className="bg" aria-hidden="true"><i className="glow" /><i className="rings" /><i className="grain" /><i className="film-grain" /></div>
-      {legal ? <Legal doc={legal} /> : caseStudy ? <CaseStudy c={caseStudy} page={page} /> : (
+      {beta ? <BetaPage b={beta} /> : legal ? <Legal doc={legal} /> : caseStudy ? <CaseStudy c={caseStudy} page={page} /> : (
         <>
           <Nav />
           <main>
