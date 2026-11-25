@@ -28,14 +28,16 @@ if (OUT === "dist-draft" && existsSync("src/pricing.local.js")) {
   pricing = (await import("data:text/javascript;base64," + Buffer.from(pr.outputFiles[0].text).toString("base64"))).default;
 }
 console.log("pricing draft:", pricing ? "included (local file)" : "not included");
-import { TREE, CASE } from "./src/content.js";
+import { TREE, CASE, PRICING, FOUNDING_PAGE } from "./src/content.js";
 const meta = {
   index: [TREE.title, TREE.description],
   case: [CASE.title, CASE.description],
+  pricing: [PRICING.title, PRICING.description],
+  founding: [FOUNDING_PAGE.title, FOUNDING_PAGE.description],
   privacy: ["Privacy. Kerf.", "Kerf privacy page. Pending legal review."],
   terms: ["Terms. Kerf.", "Kerf terms page. Pending legal review."],
 };
-for (const page of ["index", "case", "privacy", "terms"]) {
+for (const page of ["index", "case", "pricing", "founding", "privacy", "terms"]) {
   const r = await build({
     entryPoints: ["src/main.jsx"], bundle: true, minify: true, write: false, format: "iife", jsx: "automatic", target: ["es2019"],
     define: { "process.env.NODE_ENV": '"production"', "__KERF_IMAGES__": JSON.stringify(have), "__KERF_LOGOS__": JSON.stringify(logos), "__KERF_PAGE__": JSON.stringify(page), "__KERF_PRICING__": JSON.stringify(pricing), "__KERF_MARK__": JSON.stringify(markSvg), "__KERF_MARK_MONO__": JSON.stringify(markMono) },
@@ -53,7 +55,8 @@ for (const page of ["index", "case", "privacy", "terms"]) {
 ${page === "index" ? "" : '<meta name="robots" content="noindex">'}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"></noscript>
 <link rel="icon" href="data:image/svg+xml,${icon}">
 <style>${css}</style>
 </head>

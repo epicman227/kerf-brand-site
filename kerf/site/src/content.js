@@ -1,7 +1,7 @@
 // Page content for the Kerf site. One page. Source: the approved brief on KERA-477 (STRAT-6):
 // "Positioning brief v2" and "Website rewrite plan", look locked to D v2 Rings (KERA-524).
 // Rules: no invented testimonials, numbers or logos. No "coming soon", "planned" or "beta" on a feature.
-// QuickBooks Online and QuoteIQ are the only CRMs named. No Jobber. No price in this file: the
+// QuoteIQ is the only CRM named until KERA-475 merges; then QuickBooks Online may return. No substitute label. No Jobber. No price in this file: the
 // cost and founding blocks come from src/pricing.local.js, which is not committed (see build.mjs).
 
 // PLACEHOLDER: Connor has not supplied the real booking link. Replace this one value.
@@ -62,8 +62,8 @@ export const TREE = {
   crm: {
     eyebrow: "The CRM you have",
     heading: "You keep estimating where you do now.",
-    body: "Kerf does not replace your CRM. It works with QuickBooks Online and QuoteIQ. Moving a card on the board does not write back to the CRM and does not send anything.",
-    names: ["QuickBooks Online", "QuoteIQ"],
+    body: "Kerf does not replace your CRM. It works with QuoteIQ. Moving a card on the board does not write back to the CRM and does not send anything.",
+    names: ["QuoteIQ"],
   },
   week: {
     eyebrow: "How a week works",
@@ -87,7 +87,7 @@ export const TREE = {
         "If that move is not done, forward the number to a Quo number. Calls still come in, and Kerf still gets them. Forwarding is the fallback.",
         "A personal cell can stay personal. Kerf will not ask you to move it. You can forward missed calls from it instead.",
       ]],
-      ["What CRM do I need?", ["The one you estimate in now. Kerf does not replace it. This page names QuickBooks Online and QuoteIQ. You keep estimating there. Moving a card does not write back and does not send."]],
+      ["What CRM do I need?", ["The one you estimate in now. Kerf does not replace it. Kerf works with QuoteIQ. You keep estimating there. Moving a card does not write back and does not send."]],
       ["What will I see on a call?", ["North Fork Arbor Care, a made-up company. Not your books. Nothing is sent while we look."]],
       ["Is there an app store app?", ["No. It is the phone browser. Add to Home Screen."]],
     ],
@@ -114,9 +114,84 @@ export const TREE = {
     note: "Or leave your details and we will reach out.",
     success: "Got it. We will be in touch.",
     failure: "That did not go through. Please try again in a minute.",
-    systems: ["QuickBooks Online", "QuoteIQ", "Something else"],
+    systems: ["QuoteIQ", "Something else"],
+  },
+  teaser: {
+    eyebrow: "Pricing and founding customers",
+    heading: "See the plan, or be one of the first few.",
+    body: "How Kerf is priced, next to the phone bill. And what the first 3 to 5 companies get.",
+    links: [["Pricing", "pricing.html"], ["Founding customers", "founding.html"]],
   },
   footer: "Kerf. Built by an arborist, for arborists.",
+};
+
+// Two more pages (KERA-571). No dollar figure in this file. The pricing proposal numbers live in
+// src/pricing.local.js (gitignored) and appear only in the dist-draft build.
+export const PRICING = {
+  file: "pricing",
+  title: "Kerf. Pricing.",
+  description: "How Kerf is priced, next to the phone bill and what a missed job costs.",
+  eyebrow: "Pricing",
+  heading: "One plan. Two bills.",
+  sub: "You pay Kerf for the system. You pay Quo for the phone. Here is both, side by side.",
+  pendingNote: "Pricing is being finalized. Reply for a 20 minute look and we will walk you through it.",
+  draftBanner: "Draft proposal. Not final. The numbers on this page are a placeholder until Connor sets the price.",
+  includedHeading: "What the plan covers",
+  included: [
+    "The board, drafts in your voice, follow-up, the report, and business health",
+    "Neighbors postcards, Social, Ads, Growth, Scouts, and analytics",
+    "Referrals tracked, with the reward queued for your tap",
+    "Approval first. Nothing goes out until you tap",
+  ],
+  notIncludedHeading: "What it does not cover",
+  notIncluded: [
+    "Your Quo bill. You pay Quo for the phone",
+    "Ad spend. You pay the ad network, not Kerf",
+    "Extra Quo credits for Sona, if you use more than Quo includes",
+  ],
+  more: "Questions about the plan? Reply for a look and ask in person.",
+};
+
+export const FOUNDING_PAGE = {
+  file: "founding",
+  title: "Kerf. Founding customers.",
+  description: "The first few tree companies to run on Kerf. What you get, what we ask, and who it fits.",
+  eyebrow: "Founding customers",
+  heading: "Be one of the first few.",
+  sub: "We are taking the first 3 to 5 tree companies. You get Kerf on better terms. We get your honest notes.",
+  getHeading: "What you get",
+  get: [
+    ["No setup fee", "The first 3 to 5 companies skip the setup fee."],
+    ["Same monthly price", "The monthly price stays the same."],
+    ["The whole suite", "The board, drafts, follow-up, report, business health, and the growth tools."],
+    ["Month to month", "No contract. Cancel any month."],
+  ],
+  askHeading: "What we ask",
+  ask: [
+    ["A case study", "A case study we can publish later."],
+    ["A weekly note", "A short weekly note from you on what broke."],
+  ],
+  askNote: "Your Quo bill is not waived. You pay Quo for the phone.",
+  fitHeading: "Who it fits",
+  fit: [
+    "Owners of 1 to 5 truck tree companies",
+    "A business phone on Quo, or ready to move the work number onto Quo",
+    "QuoteIQ for estimates",
+  ],
+  nextHeading: "What happens next",
+  next: [
+    ["You reply", "Leave your details below, or use the booking link on the home page."],
+    ["A 20 minute look", "We show you Kerf on North Fork Arbor Care, a made-up company. No real customer data is on screen."],
+    ["You decide", "If it fits, we talk through setup. If it does not, you have lost 20 minutes."],
+  ],
+  form: {
+    heading: "Tell us about your shop",
+    note: "This form is a draft. It is not connected to anything yet, and nothing you type here is saved or sent.",
+    notConnected: "Draft only. This form is not connected yet, so nothing was sent.",
+    trucks: ["1 truck", "2 to 3 trucks", "4 to 5 trucks", "More than 5"],
+    quo: ["Yes, on Quo now", "Not yet, but willing to move", "No"],
+    submit: "Send",
+  },
 };
 
 const PENDING = "Pending legal review. This page is a placeholder, not final, and not legal advice.";

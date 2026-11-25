@@ -12,3 +12,6 @@ __pycache__/
 kerf/site/src/pricing.local.js
 kerf/site/shots/
 kerf/site/dist-draft/
+
+# local symlink, never ship
+kerf/site/node_modules

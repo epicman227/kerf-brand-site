@@ -65,10 +65,12 @@ p{margin:0 0 16px}
 .burger span+span{top:25px}
 .burger.x span{top:21px;transform:rotate(45deg)}.burger.x span+span{transform:rotate(-45deg)}
 .sheet{display:none}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--heartwood);color:#0E1B1A;font-weight:600;padding:12px 18px;border-radius:var(--r-md);min-height:44px;display:inline-flex;align-items:center}.skip:focus{top:12px}
+main:focus{outline:none}
 @media (max-width:900px){
   .nav-links{display:none}.burger{display:block}
-  .sheet{display:grid;gap:4px;padding:0 20px;max-height:0;overflow:hidden;transition:max-height .35s var(--ease),padding .35s}
-  .sheet.open{max-height:420px;padding:8px 20px 20px}
+  .sheet{display:grid;gap:4px;padding:0 20px;max-height:0;overflow:hidden;visibility:hidden;transition:max-height .35s var(--ease),padding .35s,visibility 0s .35s}
+  .sheet.open{max-height:420px;padding:8px 20px 20px;visibility:visible;transition-delay:0s}
   .sheet a{padding:12px 4px;font-size:18px;border-bottom:1px solid var(--rim);min-height:44px}
 }
 
@@ -155,3 +157,19 @@ p{margin:0 0 16px}
   .ledger-row{grid-template-columns:1fr;gap:4px}
   .foot nav{margin-left:0}
 }
+
+/* pricing and founding pages (KERA-571) */
+.ticks{list-style:none;padding:0;margin:0 0 8px;display:grid;gap:12px}
+.ticks li{position:relative;padding-left:26px;color:var(--mist);font-size:17px}
+.ticks li::before{content:"";position:absolute;left:0;top:.62em;width:12px;height:12px;border-radius:50%;border:2px solid var(--hue)}
+.cards.four{grid-template-columns:repeat(4,1fr)}
+.cards.two{grid-template-columns:1fr;margin-bottom:8px}
+.draftbar{border:1px dashed color-mix(in srgb,var(--hue) 55%,transparent);border-radius:var(--r-md);padding:12px 16px;color:var(--bone);font-size:15px;max-width:62ch}
+.plan{max-width:480px}
+.price{margin:0 0 8px;font-family:var(--display)}
+.price b{font-size:clamp(44px,6vw,64px);letter-spacing:-.03em}
+.price span{font-size:18px;color:var(--mist)}
+.plan-n{color:var(--mist);margin:0 0 6px}
+@media (max-width:1100px){.cards.four{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){.cards.four{grid-template-columns:1fr}}
+@media (max-width:1000px){.nav-links{gap:16px}}
