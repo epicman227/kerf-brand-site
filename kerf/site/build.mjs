@@ -29,18 +29,22 @@ if (OUT === "dist-draft" && existsSync("src/pricing.local.js")) {
 }
 console.log("pricing draft:", pricing ? "included (local file)" : "not included");
 import { TREE, CASE, PRICING, FOUNDING_PAGE } from "./src/content.js";
+import { SEO } from "./src/seo-content.js";
+const esc = (t) => t.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 const meta = {
   index: [TREE.title, TREE.description],
   case: [CASE.title, CASE.description],
   pricing: [PRICING.title, PRICING.description],
   founding: [FOUNDING_PAGE.title, FOUNDING_PAGE.description],
+  guides: ["Guides for tree care owners. Kerf.", "Plain answers for tree care owners on QuoteIQ and Quo: comparisons, owner questions, and Front Range pages. Draft."],
   privacy: ["Privacy. Kerf.", "Kerf privacy page. Pending legal review."],
   terms: ["Terms. Kerf.", "Kerf terms page. Pending legal review."],
 };
-for (const page of ["index", "case", "pricing", "founding", "privacy", "terms"]) {
+for (const x of SEO) meta[x.slug] = [x.title, x.description];
+for (const page of ["index", "case", "pricing", "founding", "guides", ...SEO.map((x) => x.slug), "privacy", "terms"]) {
   const r = await build({
     entryPoints: ["src/main.jsx"], bundle: true, minify: true, write: false, format: "iife", jsx: "automatic", target: ["es2019"],
-    define: { "process.env.NODE_ENV": '"production"', "__KERF_IMAGES__": JSON.stringify(have), "__KERF_LOGOS__": JSON.stringify(logos), "__KERF_PAGE__": JSON.stringify(page), "__KERF_PRICING__": JSON.stringify(pricing), "__KERF_MARK__": JSON.stringify(markSvg), "__KERF_MARK_MONO__": JSON.stringify(markMono) },
+    define: { "process.env.NODE_ENV": '"production"', "__KERF_IMAGES__": JSON.stringify(have), "__KERF_LOGOS__": JSON.stringify(logos), "__KERF_PAGE__": JSON.stringify(page), "__KERF_SEO__": JSON.stringify(SEO.map(({ body, title, description, ...r }) => (r.slug === page ? { ...r, body } : r))), "__KERF_PRICING__": JSON.stringify(pricing), "__KERF_MARK__": JSON.stringify(markSvg), "__KERF_MARK_MONO__": JSON.stringify(markMono) },
     legalComments: "none",
   });
   const js = r.outputFiles[0].text;
@@ -50,8 +54,8 @@ for (const page of ["index", "case", "pricing", "founding", "privacy", "terms"])
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${title}</title>
-<meta name="description" content="${desc}">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(desc)}">
 ${page === "index" ? "" : '<meta name="robots" content="noindex">'}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
