@@ -10,7 +10,7 @@ const section = (md, name) => {
 const blocks = (txt) => txt.split(/\n{2,}/).map((s) => s.trim()).filter(Boolean).map((s) => s.startsWith("### ") ? { h: s.slice(4) } : { p: s });
 const strip = (b) => b
   .filter((x) => !(x.p && /^On the published page, the questions below/.test(x.p)))
-  .map((x) => x.p ? { p: x.p.replace(/\s*This draft has no booking link\.?/g, "").replace(/\s*There is no booking link for a shop that is not already on both\./g, (m) => m) } : x);
+  ;
 const pages = {};
 const sets = [
   ["denver-tree-service", "city", "Denver"], ["colorado-springs-tree-removal", "city", "Colorado Springs"], ["aurora-tree-trimming", "city", "Aurora"],

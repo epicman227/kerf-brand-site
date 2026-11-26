@@ -39,7 +39,7 @@ export const SEO = [
     "p": "Book a demo."
    },
    {
-    "p": "The demo is a 20 minute look at North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look."
+    "p": "The demo is a 20 minute look at North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look. This draft has no booking link."
    }
   ]
  },
@@ -82,7 +82,7 @@ export const SEO = [
     "p": "Book a demo."
    },
    {
-    "p": "The demo is a 20 minute look at North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look."
+    "p": "The demo is a 20 minute look at North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look. This draft has no booking link."
    }
   ]
  },
@@ -125,7 +125,7 @@ export const SEO = [
     "p": "Book a demo."
    },
    {
-    "p": "The demo is a 20 minute look at North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look."
+    "p": "The demo is a 20 minute look at North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look. This draft has no booking link."
    }
   ]
  },
@@ -168,7 +168,7 @@ export const SEO = [
     "p": "Book a demo."
    },
    {
-    "p": "The demo is a 20 minute look at North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look."
+    "p": "The demo is a 20 minute look at North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look. This draft has no booking link."
    }
   ]
  },
@@ -214,7 +214,7 @@ export const SEO = [
     "p": "Book a demo."
    },
    {
-    "p": "The demo is a 20 minute look at North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look."
+    "p": "The demo is a 20 minute look at North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look. This draft has no booking link."
    }
   ]
  },
@@ -272,7 +272,7 @@ export const SEO = [
     "p": "Book a demo."
    },
    {
-    "p": "The demo is about 20 minutes on North Fork Arbor Care. No card on that look. No go-live date."
+    "p": "The demo is about 20 minutes on North Fork Arbor Care. No card on that look. No go-live date. This draft has no booking link."
    }
   ]
  },
@@ -321,7 +321,7 @@ export const SEO = [
     "p": "Book a demo."
    },
    {
-    "p": "The demo is about 20 minutes on North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look. No card on that look. No go-live date."
+    "p": "The demo is about 20 minutes on North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look. No card on that look. No go-live date. This draft has no booking link."
    }
   ]
  },
@@ -409,7 +409,7 @@ export const SEO = [
     "p": "Book a demo."
    },
    {
-    "p": "The demo is about 20 minutes on North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look. No card on that look. No go-live date."
+    "p": "The demo is about 20 minutes on North Fork Arbor Care, a made-up company. Nothing is sent while you look. Send is off on that look. No card on that look. No go-live date. This draft has no booking link."
    }
   ]
  },

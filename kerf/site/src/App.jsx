@@ -531,7 +531,7 @@ function SeoPage({ x }) {
           </div>
           <div className="prose">
             {x.body.map((b, i) => b.h ? <h2 key={i}>{b.h}</h2>
-              : b.p === "Book a demo." ? <p key={i}><Ask>Book a demo</Ask></p>
+              : b.p === "Book a demo." ? <p key={i}>Book a demo.</p>
               : b.p === "Your business follows through with Kerf." ? <p key={i} className="callout">{b.p}</p>
               : <p key={i}><Inline text={b.p} /></p>)}
           </div>
