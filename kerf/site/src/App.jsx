@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { BOOK_URL, BOOK_IS_PLACEHOLDER, FORM_ENDPOINT, HERO_VIDEO, PRICING, FOUNDING_PAGE } from "./content.js";
 import { submitLead } from "./form.js";
 
+// Index of the SEO pages (slug, kind, label, h1) plus the body of the one page being built. Set by build.mjs, so no page carries the other pages' copy.
+const SEO = typeof __KERF_SEO__ !== "undefined" ? __KERF_SEO__ : [];
 const MARK = typeof __KERF_MARK__ !== "undefined" ? __KERF_MARK__ : "";
 const MARK_MONO = typeof __KERF_MARK_MONO__ !== "undefined" ? __KERF_MARK_MONO__ : "";
 const reduced = () => typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -67,7 +69,7 @@ function Nav({ home = true }) {
     return () => window.removeEventListener("scroll", f);
   }, []);
   const pre = home ? "" : "index.html";
-  const links = [[`${pre}#suite`, "The suite"], [`${pre}#quo`, "Quo"], ["pricing.html", "Pricing"], ["founding.html", "Founding customers"], [`${pre}#faq`, "FAQ"]];
+  const links = [[`${pre}#suite`, "The suite"], [`${pre}#quo`, "Quo"], ["pricing.html", "Pricing"], ["founding.html", "Founding customers"], ["guides.html", "Guides"], [`${pre}#faq`, "FAQ"]];
   return (
     <header className={`nav ${solid ? "solid" : ""}`} id="top">
       <div className="progress" style={{ transform: `scaleX(${p})` }} />
@@ -497,13 +499,89 @@ function FoundingPage({ pg }) {
   );
 }
 
+/* ---------- city, vs, FAQ and post pages (KERA-847). Copy: src/seo-content.js, generated from the approved drafts ---------- */
+
+const KIND = { city: "For a tree company in", vs: "Compare", faq: "Owner questions", post: "Guide" };
+const BY = Object.fromEntries(SEO.map((x) => [x.slug, x]));
+
+function Inline({ text }) {
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
+  return parts.map((t, i) => { const m = t.match(/^\[([^\]]+)\]\(([^)]+)\)$/); return m ? <a key={i} className="textlink" href={m[2]}>{m[1]}</a> : t; });
+}
+
+function related(x) {
+  const pick = (kind, n) => SEO.filter((y) => y.kind === kind && y.slug !== x.slug).slice(0, n);
+  if (x.kind === "city") return [...pick("vs", 2), ...pick("faq", 1), ...pick("city", 2)];
+  if (x.kind === "vs") return [...pick("vs", 1), ...pick("faq", 1), ...pick("post", 2), ...pick("city", 1)];
+  if (x.kind === "faq") return [...pick("vs", 2), ...pick("post", 2)];
+  return [...pick("vs", 1), ...pick("faq", 1), ...pick("post", 2)];
+}
+
+function SeoPage({ x }) {
+  const city = x.kind === "city" ? x.label : null;
+  return (
+    <>
+      <Nav home={false} />
+      <main id="main" tabIndex={-1}>
+        <Band hue="#BFAD90">
+          <div className="sec-head">
+            <p className="eyebrow">{city ? `${KIND.city} ${city}` : KIND[x.kind]}</p>
+            <h1 className="display">{x.h1}</h1>
+            <p className="draftbar" role="note">Draft. Not published, and not for search yet.</p>
+          </div>
+          <div className="prose">
+            {x.body.map((b, i) => b.h ? <h2 key={i}>{b.h}</h2>
+              : b.p === "Book a demo." ? <p key={i}>Book a demo.</p>
+              : b.p === "Your business follows through with Kerf." ? <p key={i} className="callout">{b.p}</p>
+              : <p key={i}><Inline text={b.p} /></p>)}
+          </div>
+        </Band>
+        <Band hue="#66B8E8">
+          <div className="sec-head"><h2>Keep reading</h2></div>
+          <ul className="cards">{related(x).map((y) => <li key={y.slug} className="card"><p className="eyebrow">{y.kind === "city" ? y.label : KIND[y.kind]}</p><h3><a href={`${y.slug}.html`}>{y.h1}</a></h3></li>)}</ul>
+          <p><a className="textlink standalone" href="guides.html">All guides</a></p>
+        </Band>
+      </main>
+      <Footer page={{ footer: "Kerf. Built by an arborist, for arborists." }} />
+    </>
+  );
+}
+
+function GuidesPage() {
+  const groups = [
+    ["Compare", "vs"], ["Owner questions", "faq"], ["Guides for tree care owners", "post"], ["Front Range", "city"],
+  ];
+  return (
+    <>
+      <Nav home={false} />
+      <main id="main" tabIndex={-1}>
+        <Band hue="#BFAD90">
+          <div className="sec-head">
+            <p className="eyebrow">Guides</p>
+            <h1 className="display">Plain answers for tree care owners.</h1>
+            <p className="lead">What Kerf does, what it does not, and how it sits beside QuoteIQ and Quo.</p>
+            <p className="draftbar" role="note">Draft. Not published, and not for search yet.</p>
+          </div>
+          {groups.map(([h, k]) => (
+            <div key={k} data-reveal>
+              <h2>{h}</h2>
+              <ul className="cards">{SEO.filter((y) => y.kind === k).map((y) => <li key={y.slug} className="card"><h3><a href={`${y.slug}.html`}>{k === "city" ? y.label : y.h1}</a></h3></li>)}</ul>
+            </div>
+          ))}
+        </Band>
+      </main>
+      <Footer page={{ footer: "Kerf. Built by an arborist, for arborists." }} />
+    </>
+  );
+}
+
 function Footer({ page }) {
   return (
     <footer className="foot">
       <div className="wrap foot-in">
         <div className="brand"><Mark size={26} /><span>kerf</span></div>
         <p>{page.footer}</p>
-        <nav aria-label="Footer"><a href="index.html#suite">The suite</a><a href="pricing.html">Pricing</a><a href="founding.html">Founding customers</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+        <nav aria-label="Footer"><a href="index.html#suite">The suite</a><a href="pricing.html">Pricing</a><a href="founding.html">Founding customers</a><a href="guides.html">Guides</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
         <small>© 2026 Kerf</small>
       </div>
     </footer>
@@ -532,7 +610,7 @@ export default function App({ page, legal, pricing, caseStudy, view = "index" })
     <>
       <a className="skip" href="#main">Skip to content</a>
       <div className="bg" aria-hidden="true"><i className="glow" /><i className="rings" /><i className="grain" /><i className="film-grain" /></div>
-      {view === "pricing" ? <PricingPage pg={PRICING} pricing={pricing} /> : view === "founding" ? <FoundingPage pg={FOUNDING_PAGE} /> : legal ? <Legal doc={legal} /> : caseStudy ? <CaseStudy c={caseStudy} page={page} /> : (
+      {view === "guides" ? <GuidesPage /> : BY[view] ? <SeoPage x={BY[view]} /> : view === "pricing" ? <PricingPage pg={PRICING} pricing={pricing} /> : view === "founding" ? <FoundingPage pg={FOUNDING_PAGE} /> : legal ? <Legal doc={legal} /> : caseStudy ? <CaseStudy c={caseStudy} page={page} /> : (
         <>
           <Nav />
           <main id="main" tabIndex={-1}>
